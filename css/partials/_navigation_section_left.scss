@@ -2,22 +2,23 @@
 
 .main-section-left {
     @include position(fixed, $header-main-height, false, 0, 0, 555 );
-    padding: 20px;
-    border-right: 1px solid $border-color-main;
+    background: $nav-dark-bg-color;
+    padding: 0px;
     width: 200px;
 
     .main-section-left-nav {
         list-style: none;
-        margin: -8px 0 0;
+        margin: 8px 0 0;
         padding: 0;
 
         a {
-            color: $font-color-dark;
+            color: $nav-dark-font-color;
             display: block;
-            padding: 8px 0;
+            padding: 8px 20px;
 
             &:hover {
-                color: $font-color-link;
+                background: darken($nav-dark-bg-color, 3);
+                color: $font-color-white;
                 text-decoration: none;
             }
         }
