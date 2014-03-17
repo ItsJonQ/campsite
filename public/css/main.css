@@ -38,8 +38,9 @@
 }
 
 html, html body {
+  color: #666666;
   font-family: "Proxima Nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 14px;
+  font-size: 15px;
   font-style: normal;
   font-weight: normal;
   line-height: 1.5em;
@@ -80,4 +81,29 @@ html, html body {
 .main-header .logo a h1 {
   margin: 0;
   padding: 0;
+}
+
+.main-section-left {
+  position: fixed;
+  top: 50px;
+  bottom: 0;
+  left: 0;
+  z-index: 555;
+  padding: 20px;
+  border-right: 1px solid #eeeeee;
+  width: 200px;
+}
+.main-section-left .main-section-left-nav {
+  list-style: none;
+  margin: -8px 0 0;
+  padding: 0;
+}
+.main-section-left .main-section-left-nav a {
+  color: #222222;
+  display: block;
+  padding: 8px 0;
+}
+.main-section-left .main-section-left-nav a:hover {
+  color: #428bca;
+  text-decoration: none;
 }
