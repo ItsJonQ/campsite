@@ -325,7 +325,7 @@ body .campfire-section {
   position: absolute;
   top: 50px;
   right: 0;
-  bottom: 100px;
+  bottom: 120px;
   left: 0;
   z-index: 3;
   overflow: hidden;
@@ -353,6 +353,38 @@ body .campfire-section {
   display: inline-block;
   overflow: hidden;
   width: auto;
+}
+.campfire-section .chat-log-submit {
+  border-top: 1px solid #eeeeee;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  height: 120px;
+  overflow: hidden;
+  padding: 10px;
+}
+.campfire-section .chat-log-submit textarea {
+  border: 1px solid #cfcfcf;
+  font-family: "Proxima Nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.5em;
+  height: 65px;
+  width: 100%;
+  padding: 5px 10px;
+}
+.campfire-section .chat-log-submit .chat-submit {
+  font-family: "Proxima Nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1;
+  border: none;
+  padding: 8px 15px;
+  background: whitesmoke;
+  width: 100%;
+}
+.campfire-section .chat-log-submit .chat-submit:active {
+  background: #ebebeb;
 }
 
 .ui-sortable-helper {

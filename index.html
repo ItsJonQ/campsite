@@ -139,11 +139,16 @@
     <aside id="campfire-section" class="campfire-section">
 
         <!-- Campfire Chat Log -->
-        <div class="chat-log-container" id="campfire-chat-log-container">
+        <section class="chat-log-container" id="campfire-chat-log-container">
 
             <section class="chat-log" id="campfire-chat-log" data-bind="template: { name: 'template-campfire-message', foreach: models }"></section>
 
-        </div>
+        </section>
+
+        <section class="chat-log-submit" id="chat-log-submit">
+            <textarea placeholder="Chat" id="chat-message-textbox" class="chat-message-textbox"></textarea>
+            <input type="submit" id="chat-send-message" value="Send message" class="chat-submit">
+        </section>
 
     </aside>
 

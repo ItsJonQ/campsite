@@ -24,7 +24,7 @@ body {
     }
 
     .chat-log-container {
-        @include position(absolute, 50px, 0, 100px, 0, 3);
+        @include position(absolute, 50px, 0, $campfire-chat-submit-height, 0, 3);
         overflow: hidden;
         padding: 0 10px;
     }
@@ -59,6 +59,38 @@ body {
             display: inline-block;
             overflow: hidden;
             width: auto;
+        }
+    }
+
+    .chat-log-submit {
+        border-top: 1px solid $border-color-main;
+        @include position(absolute, false, 0, 0, 0, 100);
+        height: $campfire-chat-submit-height;
+        overflow: hidden;
+        padding: 10px;
+
+        textarea {
+            border: 1px solid darken($border-color-main, 12);
+            font-family: $font-family-base;
+            font-size: $font-size-small;
+            line-height: 1.5em;
+            height: 65px;
+            width: 100%;
+            padding: 5px 10px;
+        }
+
+        .chat-submit {
+            font-family: $font-family-base;
+            font-size: $font-size-small;
+            line-height: 1;
+            border: none;
+            padding: 8px 15px;
+            background: $bg-color-light;
+            width: 100%;
+
+            &:active {
+                background: darken($bg-color-light, 4);
+            }
         }
     }
 }
