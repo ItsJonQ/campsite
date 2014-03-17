@@ -4,7 +4,7 @@
     @include position(fixed, $header-main-height, false, 0, 0, 555 );
     background: $nav-dark-bg-color;
     padding: 0px;
-    width: 200px;
+    width: $nav-section-left-width;
 
     .main-section-left-nav {
         list-style: none;

@@ -1,0 +1,16 @@
+// Section (Main)
+
+.main-section-content {
+    @include position(fixed, $header-main-height, 0, 0, $nav-section-left-width, 333);
+
+    header {
+        h2 {
+            margin-top: 0;
+        }
+    }
+
+    .container {
+        width: auto;
+        padding: $gutter;
+    }
+}

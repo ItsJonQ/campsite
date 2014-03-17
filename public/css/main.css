@@ -108,3 +108,19 @@ html, html body {
   color: white;
   text-decoration: none;
 }
+
+.main-section-content {
+  position: fixed;
+  top: 50px;
+  right: 0;
+  bottom: 0;
+  left: 200px;
+  z-index: 333;
+}
+.main-section-content header h2 {
+  margin-top: 0;
+}
+.main-section-content .container {
+  width: auto;
+  padding: 30px;
+}
