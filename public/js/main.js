@@ -9,9 +9,8 @@ startMessage();
 
 // Requiring the ToDo collecton
 
-window.a = new ToDos({ el: '#to-do-due-today' });
-
-console.log(a);
+var toDoDueToday = new ToDos({ el: '#to-do-due-today' });
+var toDoDueThisWeek = new ToDos({ el: '#to-do-due-this-week' });
 },{"./collections/collection.ToDos":2,"./utils/utils.test":5}],2:[function(require,module,exports){
 // Collections: ToDos
 
@@ -28,7 +27,7 @@ var ToDos;
 ToDos = function(attributes) {
 
     // Defining the array collection to store models
-    this.models = [];
+    this.models = ko.observableArray();
 
     // Defining the location where data will be fetched from
     this.fetch = fetch.toDo;
@@ -44,19 +43,20 @@ ToDos = function(attributes) {
 
         var self = this;
 
-        // Set the attributes if defined
-        if(attributes && typeof attributes === 'object') {
-            self = _.extend(self, attributes);
-        }
-
-        // Defining and setting the $El for the collection
-        self.set$el();
 
         // Fetch the data
         this.fetch(function(data) {
 
             // Return false if data is not defined
             if(!data) return false;
+
+            // Set the attributes if defined
+            if(attributes && typeof attributes === 'object') {
+                self = _.extend(self, attributes);
+            }
+
+            // Defining and setting the $El for the collection
+            self.set$el();
 
             // Define todo items from the data
             var todos = data.todos;
@@ -78,8 +78,9 @@ ToDos = function(attributes) {
             }
 
             // knockout bind this collection
-            ko.applyBindings(self);
+            ko.applyBindings(self, self.$el[0]);
 
+            // Make the collection sortable
             self.makeSortable.call(self);
 
             // Returning the collection

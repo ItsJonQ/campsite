@@ -8,6 +8,5 @@ startMessage();
 
 // Requiring the ToDo collecton
 
-window.a = new ToDos({ el: '#to-do-due-today' });
-
-console.log(a);
+var toDoDueToday = new ToDos({ el: '#to-do-due-today' });
+var toDoDueThisWeek = new ToDos({ el: '#to-do-due-this-week' });

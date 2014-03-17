@@ -98,10 +98,21 @@
                                 <h4 class="header-title">Due Today</h4>
                             </header>
 
-                            <!-- To-Do List -->
-                            <ul class="to-do-list" id="to-do-due-today" data-bind="template: { name: 'template-to-do-list', foreach: models }">
+                            <!-- To-Do List (Due Today) -->
+                            <ul class="to-do-list" id="to-do-due-today" data-bind="template: { name: 'template-to-do-list', foreach: models }"></ul>
 
-                            </ul>
+                        </div>
+
+                        <!-- To-do List Container -->
+                        <div class="to-do-list-container">
+
+                            <!-- To-do: Header -->
+                            <header class="header urgent">
+                                <h4 class="header-title">Due Today</h4>
+                            </header>
+
+                            <!-- To-Do List (Due This Week) -->
+                            <ul class="to-do-list" id="to-do-due-this-week" data-bind="template: { name: 'template-to-do-list', foreach: models }"></ul>
 
                         </div>
 
