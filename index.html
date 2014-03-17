@@ -81,11 +81,13 @@
 
         <div class="container">
 
-            <div class="main-section-container">
+            <div class="row main-section-container">
 
-                <div class="row">
+                <!-- Section: Left -->
+                <div class="col-md-6">
 
-                    <section class="col-md-6" id="quick-updates">
+                    <!-- Quick Updates -->
+                    <section id="quick-updates">
 
                         <!-- Section: Header -->
                         <header>
@@ -123,12 +125,8 @@
 
                     </section>
 
-                </div>
-
-                <div class="row">
-
                     <!-- Latest To Do -->
-                    <section class="col-md-6" id="latest-to-do">
+                    <section  id="latest-to-do">
 
                         <!-- Section: Header -->
                         <header>
@@ -148,8 +146,13 @@
 
                     </section>
 
+                </div>
+
+                <!-- Section: Right -->
+                <div class="col-md-6">
+
                     <!-- Latest Discusssions -->
-                    <section class="col-md-6" id="latest-discussions">
+                    <section id="latest-discussions">
 
                         <!-- Section: Header -->
                         <header>
@@ -298,7 +301,7 @@
     <h4 class="header-title" data-bind="text: list"></h4>
     </header>
 
-    <!-- To-Do List (Due Today) -->
+    <!-- To-Do List  -->
     <ul class="to-do-list" data-bind="template: { name: 'template-to-do-list', foreach: models }"></ul>
 
     </script>
