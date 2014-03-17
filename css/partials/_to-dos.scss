@@ -26,9 +26,68 @@
         @include list-unstyled;
         border-top: 3px solid $border-color-main;
 
-        li {
+        .to-do-task {
             @include disable-selection;
-            padding: 10px;
+            padding: 10px 0px 10px $gutter-half ;
+            border-bottom: 1px solid $border-color-light;
+            overflow: hidden;
+
+            .to-do-action {
+                float: left;
+                margin-right: $gutter-half;
+
+                input[type="checkbox"] {
+                    margin: 0px 0;
+                    vertical-align: top;
+                }
+            }
+
+            .to-do-content {
+                overflow: hidden;
+                width: auto;
+
+                .to-do-title {
+                    .title {
+                        margin-top: 0;
+                    }
+                }
+
+                .to-do-meta {
+                    color: $font-color-light;
+                    font-size: $font-size-x-small;
+                    line-height: 1;
+                }
+            }
+
+            .to-do-assigned {
+                font-size: $font-size-x-small;
+                float: right;
+                text-align: right;
+                margin-top: 0px;
+                line-height: 1;
+
+                a {
+                    color: $font-color-main;
+
+                    &:hover {
+                        color: $font-color-link;
+                        text-decoration: none;
+                    }
+                }
+
+                .user-name {
+                    background: $bg-color-light;
+                    text-align: center;
+                    padding: 3px 6px;
+                    margin-bottom: 10px;
+
+                    a {
+                        &:hover {
+                            color: $font-color-dark;
+                        }
+                    }
+                }
+            }
         }
     }
 

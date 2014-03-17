@@ -145,14 +145,59 @@ html, html body {
   padding: 0;
   border-top: 3px solid #eeeeee;
 }
-.to-do-list-container .to-do-list li {
+.to-do-list-container .to-do-list .to-do-task {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  padding: 10px;
+  padding: 10px 0px 10px 15px;
+  border-bottom: 1px solid #f2f2f2;
+  overflow: hidden;
+}
+.to-do-list-container .to-do-list .to-do-task .to-do-action {
+  float: left;
+  margin-right: 15px;
+}
+.to-do-list-container .to-do-list .to-do-task .to-do-action input[type="checkbox"] {
+  margin: 0px 0;
+  vertical-align: top;
+}
+.to-do-list-container .to-do-list .to-do-task .to-do-content {
+  overflow: hidden;
+  width: auto;
+}
+.to-do-list-container .to-do-list .to-do-task .to-do-content .to-do-title .title {
+  margin-top: 0;
+}
+.to-do-list-container .to-do-list .to-do-task .to-do-content .to-do-meta {
+  color: #aaaaaa;
+  font-size: 11px;
+  line-height: 1;
+}
+.to-do-list-container .to-do-list .to-do-task .to-do-assigned {
+  font-size: 11px;
+  float: right;
+  text-align: right;
+  margin-top: 0px;
+  line-height: 1;
+}
+.to-do-list-container .to-do-list .to-do-task .to-do-assigned a {
+  color: #666666;
+}
+.to-do-list-container .to-do-list .to-do-task .to-do-assigned a:hover {
+  color: #428bca;
+  text-decoration: none;
+}
+.to-do-list-container .to-do-list .to-do-task .to-do-assigned .user-name {
+  background: whitesmoke;
+  text-align: center;
+  padding: 3px 6px;
+  margin-bottom: 10px;
+}
+.to-do-list-container .to-do-list .to-do-task .to-do-assigned .user-name a:hover {
+  color: #222222;
 }
 
 .discussions .header {
