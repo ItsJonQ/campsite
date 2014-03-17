@@ -142,6 +142,12 @@ html, html body {
   font-weight: bold;
   line-height: 1.2em;
 }
+.to-do-list-container#to-do-due-today .header {
+  border-left: 2px solid #e74c3c;
+}
+.to-do-list-container#to-do-due-today .header .header-title {
+  padding-left: 15px;
+}
 .to-do-list-container .to-do-list {
   list-style-type: none;
   margin: 0;

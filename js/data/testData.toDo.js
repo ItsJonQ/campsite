@@ -5,6 +5,8 @@
         {
             "list": "Due Today",
 
+            "urgency": "high",
+
             "todos": [
 
                 {
@@ -38,6 +40,8 @@
         {
 
             "list": "Due This Week",
+
+            "urgency": "low",
 
             "todos": [
 

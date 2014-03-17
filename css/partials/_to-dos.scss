@@ -23,6 +23,16 @@
         }
     }
 
+    &#to-do-due-today {
+        .header {
+            border-left: 2px solid $to-do-urgent;
+
+            .header-title {
+                padding-left: $gutter-half;
+            }
+        }
+    }
+
     .to-do-list {
         @include list-unstyled;
         border-top: 3px solid $border-color-main;
