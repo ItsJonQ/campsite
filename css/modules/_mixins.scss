@@ -10,8 +10,98 @@
         @if($z)     { z-index: $z; }
     }
 
+    // TranslateZ Hack Fix to fix Jank
+    @mixin translateZ($n: 0) {
+        -webkit-transform: translateZ($n);
+        -moz-transform: translateZ($n);
+        -ms-transform: translateZ($n);
+        -o-transform: translateZ($n);
+        transform: translateZ($n);
+    }
+
+    // Transform Polyfill
+    @mixin transform($args: none) {
+        -webkit-transform: $args;
+        -moz-transform: $args;
+        -ms-transform: $args;
+        -o-transform: $args;
+        transform: $args;
+    }
+
+    // Transition Polyfill
+    @mixin transition($args: none) {
+        -webkit-transition: $args;
+        -moz-transition: $args;
+        -ms-transition: $args;
+        -o-transition: $args;
+        transition: $args;
+    }
+
+    // Transform: Scale3d
+    @mixin scale3d($x: 1, $y: 1, $z: 1) {
+        -webkit-transform: scale3d($x, $y, $z);
+        -moz-transform: scale3d($x, $y, $z);
+        -ms-transform: scale3d($x, $y, $z);
+        -o-transform: scale3d($x, $y, $z);
+        transform: scale3d($x, $y, $z);
+    }
+
+    // Transform-Style: Preserve3d
+    @mixin preserve-3d() {
+        -webkit-transform-style: preserve-3d;
+        -moz-transform-style: preserve-3d;
+        -ms-transform-style: preserve-3d;
+        -o-transform-style: preserve-3d;
+        transform-style: preserve-3d;
+    }
+    @mixin preserve3d() {
+        @include preserve-3d;
+    }
 
 // Aesthetics
+
+    // Appearance
+    @mixin appearance($args: normal) {
+        -webkit-appearance: $args;
+        -moz-appearance: $args;
+        appearance: $args;
+    }
+
+    // Background Cover
+    @mixin background-size($args: none) {
+        -webkit-background-size: $args;
+        -moz-background-size: $args;
+        -ms-background-size: $args;
+        -o-background-size: $args;
+        background-size: $args;
+    }
+
+    // Border Radius
+    @mixin border-radius($args: 0px) {
+        -webkit-border-radius: $args;
+        -moz-border-radius: $args;
+        -ms-border-radius: $args;
+        -o-border-radius: $args;
+        border-radius: $args;
+    }
+
+    // Box Shadow
+    @mixin box-shadow($args: none) {
+        -webkit-box-shadow: $args;
+        -moz-box-shadow: $args;
+        -ms-box-shadow: $args;
+        -o-box-shadow: $args;
+        box-shadow: $args;
+    }
+
+    // Box Sizing
+    @mixin box-sizing($args: none) {
+        -webkit-box-sizing: $args;
+        -moz-box-sizing: $args;
+        -ms-box-sizing: $args;
+        -o-box-sizing: $args;
+        box-sizing: $args;
+    }
 
     // Font Smoothing
     @mixin font-smoothing() {
@@ -19,4 +109,16 @@
         -moz-osx-font-smoothing: grayscale;
         font-smoothing: antialiased;
         text-rendering: optimizeLegibility;
+    }
+
+
+// Animations
+
+    // Animation Polyfill
+    @mixin animation($args: none) {
+        -webkit-animation: $args;
+        -moz-animation: $args;
+        -ms-animation: $args;
+        -o-animation: $args;
+        animation: $args;
     }

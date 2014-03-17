@@ -22,7 +22,7 @@
  *
  */
 @font-face {
-  font-family: 'proxima_nova_rgregular';
+  font-family: 'Proxima Nova';
   src: url("../../fonts/ProximaNova-Reg-webfont.eot");
   src: url("../../fonts/ProximaNova-Reg-webfont.eot?#iefix") format("embedded-opentype"), url("../../fonts/ProximaNova-Reg-webfont.woff") format("woff"), url("../../fonts/ProximaNova-Reg-webfont.ttf") format("truetype"), url("../../fonts/ProximaNova-Reg-webfont.svg#proxima_nova_rgregular") format("svg");
   font-weight: normal;
@@ -30,10 +30,10 @@
 }
 
 @font-face {
-  font-family: 'proxima_nova_rgbold';
+  font-family: 'Proxima Nova';
   src: url("../../fonts/ProximaNova-Bold-webfont.eot");
   src: url("../../fonts/ProximaNova-Bold-webfont.eot?#iefix") format("embedded-opentype"), url("../../fonts/ProximaNova-Bold-webfont.woff") format("woff"), url("../../fonts/ProximaNova-Bold-webfont.ttf") format("truetype"), url("../../fonts/ProximaNova-Bold-webfont.svg#proxima_nova_rgbold") format("svg");
-  font-weight: normal;
+  font-weight: bold;
   font-style: normal;
 }
 
@@ -117,10 +117,62 @@ html, html body {
   left: 200px;
   z-index: 333;
 }
-.main-section-content header h2 {
+.main-section-content header h3 {
   margin-top: 0;
 }
 .main-section-content .container {
   width: auto;
   padding: 30px;
+}
+
+.discussions .header {
+  background: whitesmoke;
+  margin: 0 0 10px;
+}
+.discussions .header .header-title {
+  color: #555555;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 10px;
+  margin: 0 0 0px;
+}
+.discussions .comment {
+  border-bottom: 1px solid #eeeeee;
+  overflow: hidden;
+  padding: 0 0 10px;
+  margin: 0 0 20px;
+}
+.discussions .comment .user {
+  float: left;
+  width: 40px;
+}
+.discussions .comment .user .user-avatar {
+  -webkit-border-radius: 500px;
+  -moz-border-radius: 500px;
+  -ms-border-radius: 500px;
+  -o-border-radius: 500px;
+  border-radius: 500px;
+  display: inline-block;
+  overflow: hidden;
+  width: 40px;
+  height: 40px;
+}
+.discussions .comment .user .user-avatar img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.discussions .comment .user-name {
+  color: #222222;
+  font-weight: bold;
+  margin-right: 10px;
+}
+.discussions .comment .comment-date {
+  color: #aaaaaa;
+}
+.discussions .comment .comment-content {
+  padding-left: 15px;
+  font-size: 13px;
+  overflow: hidden;
+  width: auto;
 }

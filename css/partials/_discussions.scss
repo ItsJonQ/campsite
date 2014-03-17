@@ -2,8 +2,61 @@
 
 .discussions {
 
-    .avatar {
+    .header {
+        background: $bg-color-light;
+        margin: 0 0 10px;
 
+        .header-title {
+            color: lighten($font-color-dark, 20);
+            font-size: $font-size-base;
+            font-weight: bold;
+            padding: 10px;
+            margin: 0 0 0px;
+        }
     }
+
+    .comment {
+        border-bottom: 1px solid $border-color-main;
+        overflow: hidden;
+        padding: 0 0 10px;
+        margin: 0 0 20px;
+
+        .user {
+            float: left;
+            width: 40px;
+
+            .user-avatar {
+                @include border-radius(500px);
+                display: inline-block;
+                overflow: hidden;
+                width: 40px;
+                height: 40px;
+
+                img {
+                    display: block;
+                    width: 100%;
+                    height: auto;
+                }
+            }
+        }
+
+        .user-name {
+            color: $font-color-dark;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .comment-date {
+            color: $font-color-light;
+        }
+
+        .comment-content {
+            padding-left: $gutter-half;
+            font-size: $font-size-smaller;
+            overflow: hidden;
+            width: auto;
+        }
+    }
+
 
 }

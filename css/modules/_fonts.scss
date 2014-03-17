@@ -23,7 +23,7 @@
  */
 
 @font-face {
-    font-family: 'proxima_nova_rgregular';
+    font-family: 'Proxima Nova';
     src: url('../../fonts/ProximaNova-Reg-webfont.eot');
     src: url('../../fonts/ProximaNova-Reg-webfont.eot?#iefix') format('embedded-opentype'),
          url('../../fonts/ProximaNova-Reg-webfont.woff') format('woff'),
@@ -35,13 +35,13 @@
 }
 
 @font-face {
-    font-family: 'proxima_nova_rgbold';
+    font-family: 'Proxima Nova';
     src: url('../../fonts/ProximaNova-Bold-webfont.eot');
     src: url('../../fonts/ProximaNova-Bold-webfont.eot?#iefix') format('embedded-opentype'),
          url('../../fonts/ProximaNova-Bold-webfont.woff') format('woff'),
          url('../../fonts/ProximaNova-Bold-webfont.ttf') format('truetype'),
          url('../../fonts/ProximaNova-Bold-webfont.svg#proxima_nova_rgbold') format('svg');
-    font-weight: normal;
+    font-weight: bold;
     font-style: normal;
 
 }
