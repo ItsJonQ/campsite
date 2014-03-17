@@ -139,8 +139,6 @@ html, html body {
   left: 200px;
   z-index: 333;
   overflow: hidden;
-}
-.main-section-content:hover {
   overflow-y: auto;
 }
 .main-section-content header h3 {
@@ -149,6 +147,11 @@ html, html body {
 .main-section-content .container {
   width: auto;
   padding: 30px;
+  position: relative;
+  top: 0;
+  right: 20px;
+  left: 0;
+  z-index: 3;
 }
 
 .to-do-list-container {
