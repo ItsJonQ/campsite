@@ -27,7 +27,24 @@ module.exports = function(grunt) {
             }
         },
 
+        sass: {
+            dist: {
+                options: {
+                    style: 'expanded'
+                },
+                expand: true,
+                cwd: 'css',
+                src: ['main.scss'],
+                dest: 'build/css',
+                ext: '.css'
+            }
+        },
+
         watch: {
+            styles: {
+                files: ['css/**/*.scss'],
+                tasks: ['sass']
+            },
             scripts: {
                 files: ['js/**/*.js'],
                 tasks: ['browserify:main']
@@ -40,11 +57,12 @@ module.exports = function(grunt) {
     // Loading Grunt Tasks
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-browserify');
 
 
     // Tasks
-    grunt.registerTask('default', ['browserify', 'watch']);
+    grunt.registerTask('default', ['browserify', 'jshint', 'sass', 'watch']);
 
     grunt.registerTask('bund', ['jshint', 'browserify']);
 
