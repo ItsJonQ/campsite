@@ -194,8 +194,10 @@ html, html body {
   font-weight: lighter;
 }
 .quick-updates .quick-updates-list .quick-update .quick-update-label {
+  cursor: pointer;
   display: block;
   font-size: 13px;
+  font-weight: bold;
   color: #8f8f8f;
 }
 .quick-updates .quick-updates-list .quick-update a {

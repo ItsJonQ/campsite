@@ -23,8 +23,10 @@
             }
 
             .quick-update-label {
+                cursor: pointer;
                 display: block;
                 font-size: $font-size-smaller;
+                font-weight: bold;
                 color: lighten($font-color-main, 16);
             }
 
