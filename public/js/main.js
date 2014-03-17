@@ -2,21 +2,56 @@
 // Defining the start message (testing Browserify)
 var startMessage = require('./utils/utils.test');
 
-var fetch = require('./utils/utils.fetch');
+var ToDos = require('./collections/collection.ToDos');
 
 // Firing the startup message
 startMessage();
 
-// Requiring the ToDo model
-var ToDo = require('./models/model.ToDo');
+// Requiring the ToDo collecton
 
-window.v = new ToDo();
+window.a = new ToDos();
 
+console.log(a);
+},{"./collections/collection.ToDos":2,"./utils/utils.test":5}],2:[function(require,module,exports){
+// Collections: ToDos
 
-fetch.toDo(function(data) {
-    console.log(data);
-});
-},{"./models/model.ToDo":2,"./utils/utils.fetch":3,"./utils/utils.test":4}],2:[function(require,module,exports){
+// Requiring the Fetch method
+var fetch = require('../utils/utils.fetch');
+
+// Requiring the to-do model
+var ToDo = require('../models/model.ToDo');
+
+// Defining the collection
+var ToDos;
+
+// Creating the collection constructor
+ToDos = function() {
+
+    // Defining the location where data will be fetched from
+    this.fetch = fetch.toDo;
+
+    // Defining the initialize method
+    this.initialize = function() {
+
+        // Fetch the data
+        this.fetch(function(data) {
+
+            console.log(data);
+
+        });
+
+    };
+
+    // Firing the init method on creation of the collection
+    this.initialize();
+
+};
+
+// Exporting the collection
+module.exports = ToDos;
+},{"../models/model.ToDo":3,"../utils/utils.fetch":4}],3:[function(require,module,exports){
+// Model: ToDo
+
 // Defining the model name
 var ToDo;
 
@@ -49,7 +84,7 @@ ToDo = function(attributes) {
 
 // Exporting the model
 module.exports = ToDo;
-},{}],3:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 // Fetch
 // Fetch will be used to get fake data to populate the Basecamp dash
 
@@ -88,7 +123,7 @@ fetch = {
 
 // Exporting the fetch API
 module.exports = fetch;
-},{}],4:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 module.exports = function() {
     return console.log('Start Campsite!');
 };

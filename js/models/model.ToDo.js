@@ -1,3 +1,5 @@
+// Model: ToDo
+
 // Defining the model name
 var ToDo;
 

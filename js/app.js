@@ -1,17 +1,13 @@
 // Defining the start message (testing Browserify)
 var startMessage = require('./utils/utils.test');
 
-var fetch = require('./utils/utils.fetch');
+var ToDos = require('./collections/collection.ToDos');
 
 // Firing the startup message
 startMessage();
 
-// Requiring the ToDo model
-var ToDo = require('./models/model.ToDo');
+// Requiring the ToDo collecton
 
-window.v = new ToDo();
+window.a = new ToDos();
 
-
-fetch.toDo(function(data) {
-    console.log(data);
-});
+console.log(a);
