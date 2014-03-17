@@ -256,6 +256,9 @@ html, html body {
   color: #8f8f8f;
   text-decoration: line-through;
 }
+.to-do-list-container .to-do-list .to-do-task:hover {
+  background: #fafafa;
+}
 .to-do-list-container .to-do-list .to-do-task .to-do-action {
   float: left;
   margin-right: 15px;
