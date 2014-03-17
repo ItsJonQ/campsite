@@ -313,7 +313,7 @@ ToDos.prototype.makeSortable = function() {
     // Return false if the todo list in empty
     if(!this.models.length && !this.$el) return false;
 
-    // this.$el.sortable({ connectWith: '.to-do-list' }).disableSelection();
+    this.$el.find('.to-do-list').sortable({ connectWith: '.to-do-list' }).disableSelection();
 
     return this;
 

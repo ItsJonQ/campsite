@@ -1,7 +1,13 @@
 // Section (Main)
 
 .main-section-content {
-    @include position(absolute, $header-main-height, 0, false, $nav-section-left-width, 333);
+    @include position(fixed, $header-main-height, 0, 0, $nav-section-left-width, 333);
+    overflow: hidden;
+
+    &:hover {
+        overflow-y: auto;
+    }
+
 
     header {
         h3 {
@@ -12,5 +18,6 @@
     .container {
         width: auto;
         padding: $gutter;
+
     }
 }

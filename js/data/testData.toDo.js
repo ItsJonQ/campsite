@@ -29,7 +29,15 @@
                     "assigned": "Basecamp",
                     "commentCount": 5,
                     "project": "To Do",
-                    "title": "Play around with to do items (try dragging)",
+                    "title": "Play around with to do items (try dragging them around)",
+                    "status": "normal"
+                },
+
+                {
+                    "assigned": "Basecamp",
+                    "commentCount": 46,
+                    "project": "To Do",
+                    "title": "Oh! Don't forget to check out Campfire (top right)",
                     "status": "normal"
                 }
 

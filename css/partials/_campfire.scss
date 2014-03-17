@@ -1,1 +1,31 @@
 // Campfire
+body {
+    &.campfire-active {
+
+        .main-section-content {
+            right: $campfire-section-width;
+        }
+    }
+
+    .campfire-section {
+        display: block;
+    }
+}
+
+.campfire-section {
+    @include position(fixed, $header-main-height, 0, 0, false, 222);
+    border-left: 1px solid $border-color-main;
+    width: $campfire-section-width;
+
+    &:hover {
+        .chat-log-container {
+            overflow-y: auto;
+        }
+    }
+
+    .chat-log-container {
+        @include position(absolute, 50px, 0, 100px, 0, 3);
+        overflow: hidden;
+        padding: 0 $gutter-half;
+    }
+}

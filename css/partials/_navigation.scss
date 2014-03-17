@@ -5,9 +5,10 @@
     background-color: #fff;
     border-bottom: 1px solid $border-color-main;
     height: $header-main-height;
+    overflow: hidden;
 
     .logo {
-
+        float: left;
         display: inline-block;
         margin: 10px 20px;
 
@@ -28,5 +29,29 @@
             }
         }
 
+    }
+
+    .campfire {
+        float: right;
+        display: inline-block;
+        margin: 10px 20px;
+
+        &.inactive {
+            a {
+                background: url('../../images/campfire-logo-inactive.png') center center no-repeat;
+            }
+        }
+
+        a {
+            background-position: 0px 0px;
+            background: url('../../images/campfire-logo.png') center center no-repeat;
+            display: block;
+            margin: 0px;
+            padding: 0px;
+            text-indent: -9999em;
+            width: 36px;
+            height: 30px;
+            zoom: 1;
+        }
     }
 }

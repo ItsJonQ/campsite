@@ -63,8 +63,10 @@ html, html body {
   background-color: #fff;
   border-bottom: 1px solid #eeeeee;
   height: 50px;
+  overflow: hidden;
 }
 .main-header .logo {
+  float: left;
   display: inline-block;
   margin: 10px 20px;
 }
@@ -82,6 +84,25 @@ html, html body {
 .main-header .logo a h1 {
   margin: 0;
   padding: 0;
+}
+.main-header .campfire {
+  float: right;
+  display: inline-block;
+  margin: 10px 20px;
+}
+.main-header .campfire.inactive a {
+  background: url("../../images/campfire-logo-inactive.png") center center no-repeat;
+}
+.main-header .campfire a {
+  background-position: 0px 0px;
+  background: url("../../images/campfire-logo.png") center center no-repeat;
+  display: block;
+  margin: 0px;
+  padding: 0px;
+  text-indent: -9999em;
+  width: 36px;
+  height: 30px;
+  zoom: 1;
 }
 
 .main-section-left {
@@ -111,11 +132,16 @@ html, html body {
 }
 
 .main-section-content {
-  position: absolute;
+  position: fixed;
   top: 50px;
   right: 0;
+  bottom: 0;
   left: 200px;
   z-index: 333;
+  overflow: hidden;
+}
+.main-section-content:hover {
+  overflow-y: auto;
 }
 .main-section-content header h3 {
   margin-top: 0;
@@ -271,6 +297,36 @@ html, html body {
   font-size: 13px;
   overflow: hidden;
   width: auto;
+}
+
+body.campfire-active .main-section-content {
+  right: 320px;
+}
+body .campfire-section {
+  display: block;
+}
+
+.campfire-section {
+  position: fixed;
+  top: 50px;
+  right: 0;
+  bottom: 0;
+  z-index: 222;
+  border-left: 1px solid #eeeeee;
+  width: 320px;
+}
+.campfire-section:hover .chat-log-container {
+  overflow-y: auto;
+}
+.campfire-section .chat-log-container {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  bottom: 100px;
+  left: 0;
+  z-index: 3;
+  overflow: hidden;
+  padding: 0 15px;
 }
 
 .ui-sortable-helper {
