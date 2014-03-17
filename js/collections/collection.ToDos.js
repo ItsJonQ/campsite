@@ -79,15 +79,17 @@ ToDos = function(attributes) {
     // fn: Method to mark todo item as done
     this.toggleDone = function(model, event) {
 
+        // Getting the DOM target from the click event
         var target = $(event.target).closest('.to-do-task');
-
+        // Toggling the "complete" class
         target.toggleClass('complete');
-
+        // Toggling the model's done status
         model.doneStatus ^= model.doneStatus;
-
+        // Init the model's doneStatus method
         model.toggleDone();
 
-        return model.doneStatus;
+        // Returning a boolean to update the check box
+        return true;
 
     };
 

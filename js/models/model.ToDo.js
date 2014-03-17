@@ -34,6 +34,7 @@ ToDo = function(attributes) {
 
 };
 
+// fn: Toggling the model's done Status
 ToDo.prototype.toggleDone = function() {
 
     if(this.status !== 'done') {
@@ -42,6 +43,7 @@ ToDo.prototype.toggleDone = function() {
         this.status = 'incomplete';
     }
 
+    // Returning the model
     return this;
 };
 
