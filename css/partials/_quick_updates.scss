@@ -1,0 +1,44 @@
+// Quick Updates
+.quick-updates {
+    .quick-updates-list {
+        @include list-unstyled;
+        overflow: hidden;
+
+        .quick-update {
+            cursor: pointer;
+            display: block;
+            float: left;
+            margin: 0 0 $gutter;
+            text-align: center;
+            width: 33.33334%;
+
+            .number {
+                color: $font-color-dark;
+                display: block;
+                font-size: 56px;
+                line-height: 1;
+                font-weight: lighter;
+            }
+
+            .quick-update-label {
+                display: block;
+                font-size: $font-size-smaller;
+                color: lighten($font-color-main, 16);
+            }
+
+            a {
+                display: block;
+                padding: 10px;
+
+                &:hover {
+                    background-color: $bg-color-lighter;
+                    text-decoration: none;
+
+                    .number {
+                        color: $font-color-link;
+                    }
+                }
+            }
+        }
+    }
+}

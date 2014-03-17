@@ -157,6 +157,44 @@ html, html body {
   z-index: 3;
 }
 
+.quick-updates .quick-updates-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+.quick-updates .quick-updates-list .quick-update {
+  cursor: pointer;
+  display: block;
+  float: left;
+  margin: 0 0 30px;
+  text-align: center;
+  width: 33.33334%;
+}
+.quick-updates .quick-updates-list .quick-update .number {
+  color: #222222;
+  display: block;
+  font-size: 56px;
+  line-height: 1;
+  font-weight: lighter;
+}
+.quick-updates .quick-updates-list .quick-update .quick-update-label {
+  display: block;
+  font-size: 13px;
+  color: #8f8f8f;
+}
+.quick-updates .quick-updates-list .quick-update a {
+  display: block;
+  padding: 10px;
+}
+.quick-updates .quick-updates-list .quick-update a:hover {
+  background-color: #fafafa;
+  text-decoration: none;
+}
+.quick-updates .quick-updates-list .quick-update a:hover .number {
+  color: #428bca;
+}
+
 .to-do-list-container {
   margin-bottom: 15px;
 }
