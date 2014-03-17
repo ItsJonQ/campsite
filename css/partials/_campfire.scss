@@ -23,7 +23,7 @@ body {
 
     &:hover {
         .chat-log-container {
-            overflow-y: auto;
+            // overflow-y: auto;
         }
     }
 
@@ -79,7 +79,7 @@ body {
 
     .chat-log-container {
         @include position(absolute, 41px, 0, $campfire-chat-submit-height, 0, 3);
-        overflow: hidden;
+        overflow: auto;
         padding: 0 10px;
     }
 

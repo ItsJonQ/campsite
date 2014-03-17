@@ -130,6 +130,9 @@ html, html body {
   color: white;
   text-decoration: none;
 }
+.main-section-left .main-section-left-nav a.active {
+  background: #2d3135;
+}
 
 .main-section-content {
   position: fixed;
@@ -321,9 +324,6 @@ body .campfire-section {
   border-left: 1px solid #eeeeee;
   width: 320px;
 }
-.campfire-section:hover .chat-log-container {
-  overflow-y: auto;
-}
 .campfire-section .chat-log-header {
   position: absolute;
   top: 0;
@@ -379,7 +379,7 @@ body .campfire-section {
   bottom: 120px;
   left: 0;
   z-index: 3;
-  overflow: hidden;
+  overflow: auto;
   padding: 0 10px;
 }
 .campfire-section .chat-message {

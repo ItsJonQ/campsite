@@ -48,7 +48,7 @@ init = function() {
 
     // Creating the Campfire messages
     var campfireMessages = new Messages({
-        el: '#campfire-chat-log'
+        el: '#campfire-section'
     });
 
     $('#campfire-logo').on('click', function() {

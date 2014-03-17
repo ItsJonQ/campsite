@@ -49,7 +49,7 @@
 
             <!-- Link: Dashboard -->
             <li>
-                <a href="#">Dashboard</a>
+                <a href="#" class="active">Dashboard</a>
             </li>
 
             <!-- Link: To-dos -->
@@ -161,10 +161,13 @@
 
         <!-- Campfire Chat Submit -->
         <section class="chat-log-submit" id="chat-log-submit">
-            <!-- Chat Textarea Input -->
-            <textarea placeholder="Chat" id="chat-message-textbox" class="chat-message-textbox"></textarea>
-            <!-- Chat Submit -->
-            <input type="submit" id="chat-send-message" value="Send message" class="chat-submit">
+
+            <form data-bind="submit: addNewMessage">
+                <!-- Chat Textarea Input -->
+                <textarea placeholder="Chat" id="chat-message-textbox" class="chat-message-textbox" data-bind="value: message"></textarea>
+                <!-- Chat Submit -->
+                <input type="submit" id="chat-send-message" value="Send message" class="chat-submit" data-bind="click: addNewMessage">
+            </form>
         </section>
 
     </aside>

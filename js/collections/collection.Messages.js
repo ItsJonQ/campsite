@@ -1,4 +1,4 @@
-// Collections: Messages
+    // Collections: Messages
 
 // Requiring the Fetch method
 var fetch = require('../utils/utils.fetch');
@@ -23,6 +23,8 @@ Messages = function(attributes) {
 
     // Defining the cached $el, based on el
     this.$el = null;
+
+    this.message = ko.observable();
 
     // Defining the initialize method
     this.initialize = function(attributes) {
@@ -57,6 +59,9 @@ Messages = function(attributes) {
             // knockout bind this collection
             ko.applyBindings(self, self.$el[0]);
 
+            // Render the view of the chat
+            self.render();
+
             // Returning the collection
             return self;
 
@@ -69,6 +74,20 @@ Messages = function(attributes) {
 
 };
 
+// fn: Rendering the view of the chat log
+Messages.prototype.render = function() {
+    // Return false if $el is not defined
+    if(!this.$el) return false;
+
+    // Scroll the parent container to the bottom
+    var el = this.$el.find('#campfire-chat-log')[0];
+    el.parentNode.scrollTop = el.clientHeight;
+
+    // Returning the collection
+    return this;
+
+};
+
 // fn: Adding a model to the collection
 Messages.prototype.add = function(model) {
     // Return false if model is not defined
@@ -77,10 +96,43 @@ Messages.prototype.add = function(model) {
     // Adding the model to the models array
     this.models.push(model);
 
+    // Re-render the view everytime a new chat message is added
+    this.render();
+
     // Returning the collection
     return this;
 };
 
+// fn: adding a new message to the collection
+Messages.prototype.addNewMessage = function() {
+    var self = this;
+
+    // Defining the message (creating a copy of the one bound to the collection)
+    var msg = self.message();
+
+    // Return false if message is not defined
+    if(!msg) return false;
+
+    // Creating the new message model and adding it via the add method
+    self.add(
+        new Message({
+            user: 'Jon Q',
+            message: msg,
+            timestamp: ''
+            })
+    );
+
+    // Reseting the message value
+    self.message(null);
+
+    // Returning the collection
+    return this;
+
+};
+
+
+
+// fn: Setting the $el of the model
 Messages.prototype.set$el = function() {
 
     // Return the $el if it has already been set

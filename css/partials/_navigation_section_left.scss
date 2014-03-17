@@ -21,6 +21,10 @@
                 color: $font-color-white;
                 text-decoration: none;
             }
+
+            &.active {
+                background: darken($nav-dark-bg-color, 3);
+            }
         }
     }
 }
