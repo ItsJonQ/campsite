@@ -331,7 +331,7 @@ body .campfire-section {
 .campfire-section .chat-message {
   border-bottom: 1px dotted #eeeeee;
   font-size: 14px;
-  padding: 5px 10px;
+  padding: 8px 10px;
   overflow: hidden;
 }
 .campfire-section .chat-message .timestamp {
@@ -340,12 +340,14 @@ body .campfire-section {
 }
 .campfire-section .chat-message .user {
   color: #222222;
+  display: inline-block;
   font-weight: bold;
   float: left;
   min-width: 60px;
   margin-right: 10px;
 }
 .campfire-section .chat-message .message {
+  display: inline-block;
   overflow: hidden;
   width: auto;
 }
