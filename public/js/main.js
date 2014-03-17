@@ -4,7 +4,45 @@ var startMessage = require('./utils/utils.test');
 
 // Firing the startup message
 startMessage();
-},{"./utils/utils.test":2}],2:[function(require,module,exports){
+
+// Requiring the ToDo model
+var ToDo = require('./models/model.ToDo');
+
+window.v = new ToDo();
+},{"./models/model.ToDo":2,"./utils/utils.test":3}],2:[function(require,module,exports){
+// Defining the model name
+var ToDo;
+
+// Creating the model constructor
+ToDo = function(attributes) {
+
+    // Setting the default attributes of the model
+    this.attributes = {
+        assigned: null,
+        status: 'incomplete',
+        project: null,
+        title: null
+    };
+
+    // fn: Initialize method that fires when the model is created
+    this.initialize = function(attributes) {
+
+        // extend (underscore) the default attributes if attributes have been defined when the model was created
+        if(attributes && typeof attributes === 'object') {
+            this.attributes = _.extend(this.attributes, attributes);
+        }
+
+
+    };
+
+    // Fire the init method
+    this.initialize(attributes);
+
+};
+
+// Exporting the model
+module.exports = ToDo;
+},{}],3:[function(require,module,exports){
 module.exports = function() {
     return console.log('Start Campsite!');
 };
