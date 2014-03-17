@@ -2,6 +2,8 @@
 // Defining the start message (testing Browserify)
 var startMessage = require('./utils/utils.test');
 
+var fetch = require('./utils/utils.fetch');
+
 // Firing the startup message
 startMessage();
 
@@ -9,7 +11,12 @@ startMessage();
 var ToDo = require('./models/model.ToDo');
 
 window.v = new ToDo();
-},{"./models/model.ToDo":2,"./utils/utils.test":3}],2:[function(require,module,exports){
+
+
+fetch.toDo(function(data) {
+    console.log(data);
+});
+},{"./models/model.ToDo":2,"./utils/utils.fetch":3,"./utils/utils.test":4}],2:[function(require,module,exports){
 // Defining the model name
 var ToDo;
 
@@ -43,6 +50,45 @@ ToDo = function(attributes) {
 // Exporting the model
 module.exports = ToDo;
 },{}],3:[function(require,module,exports){
+// Fetch
+// Fetch will be used to get fake data to populate the Basecamp dash
+
+// Defining the fetch method
+var fetch;
+
+// Defining fetching of toDo
+var toDo;
+
+// Fetch will use the jQuery .ajax method to retrieve data
+
+toDo = function(callback) {
+
+    // Defining the URl to fetch from
+    var url = 'js/data/testData.toDo.js';
+
+    // Return the $.ajax method
+    return $.ajax({
+        dataType: 'json',
+        url: url,
+        success: function(data) {
+
+            // Return the callback func if defined
+            if(callback && typeof callback === 'function') {
+                // Returning with data
+                return callback(data);
+            }
+        }
+    });
+
+};
+
+fetch = {
+    toDo: toDo
+};
+
+// Exporting the fetch API
+module.exports = fetch;
+},{}],4:[function(require,module,exports){
 module.exports = function() {
     return console.log('Start Campsite!');
 };

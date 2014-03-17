@@ -1,6 +1,8 @@
 // Defining the start message (testing Browserify)
 var startMessage = require('./utils/utils.test');
 
+var fetch = require('./utils/utils.fetch');
+
 // Firing the startup message
 startMessage();
 
@@ -8,3 +10,8 @@ startMessage();
 var ToDo = require('./models/model.ToDo');
 
 window.v = new ToDo();
+
+
+fetch.toDo(function(data) {
+    console.log(data);
+});
