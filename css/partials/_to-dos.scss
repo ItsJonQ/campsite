@@ -35,6 +35,13 @@
             border-bottom: 1px solid $border-color-light;
             overflow: hidden;
 
+            &.complete {
+                .to-do-title {
+                    color: lighten($font-color-main, 16);
+                    text-decoration: line-through;
+                }
+            }
+
             .to-do-action {
                 float: left;
                 margin-right: $gutter-half;

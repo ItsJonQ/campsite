@@ -198,7 +198,7 @@
 
             <!-- To-Do Action -->
             <div class="to-do-action">
-                <input type="checkbox" tabindex="-1" name="done">
+                <input type="checkbox" tabindex="-1" name="done" data-bind="checked: doneStatus, click: $parent.toggleDone">
             </div>
 
             <!-- To-Do Assigned -->

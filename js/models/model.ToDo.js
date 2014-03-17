@@ -14,6 +14,8 @@ ToDo = function(attributes) {
         title: null
     };
 
+    this.doneStatus = false;
+
     // fn: Initialize method that fires when the model is created
     this.initialize = function(attributes) {
 
@@ -30,6 +32,17 @@ ToDo = function(attributes) {
     // Fire the init method
     this.initialize(attributes);
 
+};
+
+ToDo.prototype.toggleDone = function() {
+
+    if(this.status !== 'done') {
+        this.status = 'done';
+    } else {
+        this.status = 'incomplete';
+    }
+
+    return this;
 };
 
 // Exporting the model

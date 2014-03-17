@@ -13,7 +13,7 @@ var ToDos;
 ToDos = function(attributes) {
 
     // Defining the array collection to store models
-    this.models = ko.observableArray();
+    this.models = ko.observableArray([]);
 
     // Defining the location where data will be fetched from
     this.fetch = fetch.toDo;
@@ -76,6 +76,21 @@ ToDos = function(attributes) {
 
     };
 
+    // fn: Method to mark todo item as done
+    this.toggleDone = function(model, event) {
+
+        var target = $(event.target).closest('.to-do-task');
+
+        target.toggleClass('complete');
+
+        model.doneStatus ^= model.doneStatus;
+
+        model.toggleDone();
+
+        return model.doneStatus;
+
+    };
+
     // Firing the init method on creation of the collection
     this.initialize(attributes);
 
@@ -114,11 +129,13 @@ ToDos.prototype.makeSortable = function() {
     // Return false if the todo list in empty
     if(!this.models.length && !this.$el) return false;
 
-    this.$el.sortable({ connectWith: '.to-do-list' }).disableSelection();
+    // this.$el.sortable({ connectWith: '.to-do-list' }).disableSelection();
 
     return this;
 
 };
+
+
 
 // Exporting the collection
 module.exports = ToDos;

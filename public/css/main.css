@@ -161,6 +161,10 @@ html, html body {
   border-bottom: 1px solid #f2f2f2;
   overflow: hidden;
 }
+.to-do-list-container .to-do-list .to-do-task.complete .to-do-title {
+  color: #8f8f8f;
+  text-decoration: line-through;
+}
 .to-do-list-container .to-do-list .to-do-task .to-do-action {
   float: left;
   margin-right: 15px;
