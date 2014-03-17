@@ -125,6 +125,36 @@ html, html body {
   padding: 30px;
 }
 
+.to-do-list-container .header.urgent {
+  border-left: 2px solid #e74c3c;
+}
+.to-do-list-container .header.urgent .header-title {
+  padding-left: 15px;
+}
+.to-do-list-container .header .header-title {
+  padding: 10px 0;
+  margin: 0;
+  color: #222222;
+  font-size: 15px;
+  font-weight: bold;
+  line-height: 1.2em;
+}
+.to-do-list-container .to-do-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  border-top: 3px solid #eeeeee;
+}
+.to-do-list-container .to-do-list li {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  padding: 10px;
+}
+
 .discussions .header {
   background: whitesmoke;
   margin: 0 0 10px;
@@ -133,6 +163,7 @@ html, html body {
   color: #555555;
   font-size: 15px;
   font-weight: bold;
+  line-height: 1.2em;
   padding: 10px;
   margin: 0 0 0px;
 }

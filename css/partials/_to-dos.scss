@@ -1,5 +1,35 @@
 // To-dos
 
-.to-do {
+.to-do-list-container {
+
+    .header {
+
+        &.urgent {
+            border-left: 2px solid $to-do-urgent;
+
+            .header-title {
+                padding-left: $gutter-half;
+            }
+        }
+
+        .header-title {
+            padding: 10px 0;
+            margin: 0;
+            color: $font-color-dark;
+            font-size: $font-size-base;
+            font-weight: bold;
+            line-height: 1.2em;
+        }
+    }
+
+    .to-do-list {
+        @include list-unstyled;
+        border-top: 3px solid $border-color-main;
+
+        li {
+            @include disable-selection;
+            padding: 10px;
+        }
+    }
 
 }

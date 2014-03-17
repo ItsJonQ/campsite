@@ -122,3 +122,63 @@
         -o-animation: $args;
         animation: $args;
     }
+
+
+// Helpers
+
+    // Clearfix
+    // Source: http://nicolasgallagher.com/micro-clearfix-hack/
+    //
+    // For modern browsers
+    // 1. The space content is one way to avoid an Opera bug when the
+    //    contenteditable attribute is included anywhere else in the document.
+    //    Otherwise it causes space to appear at the top and bottom of elements
+    //    that are clearfixed.
+    // 2. The use of `table` rather than `block` is only necessary if using
+    //    `:before` to contain the top-margins of child elements.
+    @mixin clearfix() {
+        &:before,
+        &:after {
+            content: " "; // 1
+            display: table; // 2
+        }
+        &:after {
+            clear: both;
+        }
+    }
+
+    // Prevents user selection
+    @mixin disableSelect() {
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+    @mixin disableSelection() {
+        @include disableSelect;
+    }
+    @mixin disable-selection() {
+        @include disableSelect;
+    }
+    @mixin disable-select() {
+        @include disableSelect;
+    }
+    @mixin no-select() {
+        @include disableSelect;
+    }
+
+
+// Lists
+
+    // UL: Resets properties
+    @mixin listUnstyled() {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+    // UL: Reset Alias
+    @mixin list-unstyled() {
+        @include listUnstyled;
+    }
