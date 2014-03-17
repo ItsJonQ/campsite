@@ -216,6 +216,7 @@ html, html body {
   width: auto;
 }
 .to-do-list-container .to-do-list .to-do-task .to-do-content .to-do-title .title {
+  font-size: 15px;
   margin-top: 0;
   margin-bottom: 5px;
   line-height: 1.4em;
@@ -255,6 +256,7 @@ html, html body {
 .discussions .header {
   background: whitesmoke;
   margin: 0 0 10px;
+  overflow: hidden;
 }
 .discussions .header .header-title {
   color: #555555;
@@ -263,6 +265,16 @@ html, html body {
   line-height: 1.2em;
   padding: 10px;
   margin: 0 0 0px;
+}
+.discussions .header .view-full {
+  font-size: 11px;
+  font-weight: bold;
+  line-height: 1;
+  float: right;
+  margin: 15px 10px;
+}
+.discussions .header .view-full a {
+  color: #888888;
 }
 .discussions .comment {
   border-bottom: 1px solid #eeeeee;
@@ -300,7 +312,7 @@ html, html body {
 }
 .discussions .comment .comment-content {
   padding-left: 15px;
-  font-size: 13px;
+  font-size: 15px;
   overflow: hidden;
   width: auto;
 }

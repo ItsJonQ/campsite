@@ -5,6 +5,7 @@
     .header {
         background: $bg-color-light;
         margin: 0 0 10px;
+        overflow: hidden;
 
         .header-title {
             color: lighten($font-color-dark, 20);
@@ -13,6 +14,19 @@
             line-height: 1.2em;
             padding: 10px;
             margin: 0 0 0px;
+        }
+
+        .view-full {
+            font-size: $font-size-x-small;
+            font-weight: bold;
+            line-height: 1;
+            float: right;
+            margin: $gutter-half 10px;
+
+            a {
+                color: lighten($font-color-dark, 40);
+            }
+
         }
     }
 
@@ -53,7 +67,7 @@
 
         .comment-content {
             padding-left: $gutter-half;
-            font-size: $font-size-smaller;
+            font-size: $font-size-base;
             overflow: hidden;
             width: auto;
         }
