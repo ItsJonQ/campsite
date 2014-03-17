@@ -31,7 +31,7 @@
                 <a href="#"><h1>Basecamp</h1></a>
             </span>
 
-            <div class="campfire inactive" id="campfire-logo">
+            <div class="campfire" id="campfire-logo">
                 <a href="#">Campfire</a>
             </div>
 
@@ -138,15 +138,28 @@
     <!-- Section: Campfire (Right) -->
     <aside id="campfire-section" class="campfire-section">
 
-        <!-- Campfire Chat Log -->
+        <!-- Campfire Chat Log Header -->
+        <section class="chat-log-header" id="campfire-chat-log-header">
+            <ul class="chat-header-tabs">
+                <li class="chat-tab"><a href="#">Lobby</a></li>
+                <li class="chat-tab"><a href="#">General</a></li>
+                <li class="chat-tab"><a href="#">People</a></li>
+            </ul>
+        </section>
+
+        <!-- Campfire Chat Log (Container) -->
         <section class="chat-log-container" id="campfire-chat-log-container">
 
+            <!-- Campfire Chat Log List -->
             <section class="chat-log" id="campfire-chat-log" data-bind="template: { name: 'template-campfire-message', foreach: models }"></section>
 
         </section>
 
+        <!-- Campfire Chat Submit -->
         <section class="chat-log-submit" id="chat-log-submit">
+            <!-- Chat Textarea Input -->
             <textarea placeholder="Chat" id="chat-message-textbox" class="chat-message-textbox"></textarea>
+            <!-- Chat Submit -->
             <input type="submit" id="chat-send-message" value="Send message" class="chat-submit">
         </section>
 

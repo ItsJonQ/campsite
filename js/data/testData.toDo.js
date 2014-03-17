@@ -35,7 +35,7 @@
                 },
 
                 {
-                    "assigned": "Basecamp",
+                    "assigned": "Basecamp Team",
                     "commentCount": 5,
                     "project": "To Do",
                     "title": "Play around with to do items (try dragging them around)",
@@ -43,7 +43,7 @@
                 },
 
                 {
-                    "assigned": "Basecamp",
+                    "assigned": "Basecamp Team",
                     "commentCount": 46,
                     "project": "To Do",
                     "title": "Oh! Don't forget to check out Campfire (top right)",
@@ -87,7 +87,7 @@
                 },
 
                 {
-                    "assigned": "Basecamp",
+                    "assigned": "Basecamp Team",
                     "commentCount": 37,
                     "project": "Snacks",
                     "title": "Let JQ know what snacks you we fancy",

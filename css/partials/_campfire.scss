@@ -5,10 +5,14 @@ body {
         .main-section-content {
             right: $campfire-section-width;
         }
+
+        .campfire-section {
+            display: block;
+        }
     }
 
     .campfire-section {
-        display: block;
+        display: none;
     }
 }
 
@@ -23,8 +27,46 @@ body {
         }
     }
 
+    .chat-log-header {
+        @include position(absolute, 0, 0, false, 0, 333);
+        border-bottom: 1px solid $border-color-main;
+        height: 41px;
+        overflow: hidden;
+
+        .chat-header-tabs {
+            @include list-unstyled;
+            display: block;
+            overflow: hidden;
+
+            .chat-tab {
+                display: block;
+                font-size: $font-size-small;
+                font-weight: bold;
+                line-height: 1;
+                float: left;
+                width: 33.33334%;
+                padding: 5px 5px 5px 0;
+
+                &:first-of-type {
+                    padding-left: 5px;
+                }
+
+                a {
+                    background: $bg-color-light;
+                    display: block;
+                    padding: 8px 10px;
+                    text-align: center;
+
+                    &:hover {
+                        text-decoration: none;
+                    }
+                }
+            }
+        }
+    }
+
     .chat-log-container {
-        @include position(absolute, 50px, 0, $campfire-chat-submit-height, 0, 3);
+        @include position(absolute, 41px, 0, $campfire-chat-submit-height, 0, 3);
         overflow: hidden;
         padding: 0 10px;
     }

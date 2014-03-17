@@ -305,8 +305,11 @@ html, html body {
 body.campfire-active .main-section-content {
   right: 320px;
 }
-body .campfire-section {
+body.campfire-active .campfire-section {
   display: block;
+}
+body .campfire-section {
+  display: none;
 }
 
 .campfire-section {
@@ -321,9 +324,47 @@ body .campfire-section {
 .campfire-section:hover .chat-log-container {
   overflow-y: auto;
 }
+.campfire-section .chat-log-header {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 333;
+  border-bottom: 1px solid #eeeeee;
+  height: 41px;
+  overflow: hidden;
+}
+.campfire-section .chat-log-header .chat-header-tabs {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: block;
+  overflow: hidden;
+}
+.campfire-section .chat-log-header .chat-header-tabs .chat-tab {
+  display: block;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 1;
+  float: left;
+  width: 33.33334%;
+  padding: 5px 5px 5px 0;
+}
+.campfire-section .chat-log-header .chat-header-tabs .chat-tab:first-of-type {
+  padding-left: 5px;
+}
+.campfire-section .chat-log-header .chat-header-tabs .chat-tab a {
+  background: whitesmoke;
+  display: block;
+  padding: 8px 10px;
+  text-align: center;
+}
+.campfire-section .chat-log-header .chat-header-tabs .chat-tab a:hover {
+  text-decoration: none;
+}
 .campfire-section .chat-log-container {
   position: absolute;
-  top: 50px;
+  top: 41px;
   right: 0;
   bottom: 120px;
   left: 0;

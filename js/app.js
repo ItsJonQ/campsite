@@ -51,6 +51,10 @@ init = function() {
         el: '#campfire-chat-log'
     });
 
+    $('#campfire-logo').on('click', function() {
+        $('body').toggleClass('campfire-active');
+    });
+
 };
 
 // Start 'er up!!
