@@ -98,7 +98,7 @@
                     "assigned": "Basecamp Team",
                     "commentCount": 37,
                     "project": "Snacks",
-                    "title": "Let JQ know what snacks you we fancy",
+                    "title": "Let JQ know what snacks we fancy",
                     "status": "normal"
                 }
 

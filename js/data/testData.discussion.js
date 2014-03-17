@@ -40,7 +40,7 @@
                     "avatar": "images/avatar-q.gif",
                     "date": "Mar 9, 2014",
                     "user": "Jon Q",
-                    "comment": "Sure thing bud! Here ya go <a href='http://googlewebmastercentral.blogspot.ca/2014/02/infinite-scroll-search-friendly.html'>Linkkkyyyy</a>"
+                    "comment": "Sure thing bud! Here ya go <a href='http://googlewebmastercentral.blogspot.ca/2014/02/infinite-scroll-search-friendly.html' target='_blank'>Linkkkyyyy</a>"
 
                 },
                 {
