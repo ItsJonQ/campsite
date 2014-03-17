@@ -69,6 +69,7 @@ html, html body {
   float: left;
   display: inline-block;
   margin: 10px 20px;
+  width: 160px;
 }
 .main-header .logo a {
   background-position: 0px 0px;
@@ -84,6 +85,18 @@ html, html body {
 .main-header .logo a h1 {
   margin: 0;
   padding: 0;
+}
+.main-header .header-search {
+  float: left;
+  margin: 10px 10px 10px 0;
+}
+.main-header .header-search .header-search-input {
+  border: 1px solid #cfcfcf;
+  font-size: 14px;
+  line-height: 1;
+  width: 500px;
+  padding: 5px 10px;
+  height: 30px;
 }
 .main-header .campfire {
   float: right;
@@ -158,16 +171,18 @@ html, html body {
 }
 
 .quick-updates .quick-updates-list {
+  border-bottom: 1px solid #eeeeee;
   list-style-type: none;
   margin: 0;
   padding: 0;
   overflow: hidden;
+  margin: 0 0 30px;
+  padding-bottom: 15px;
 }
 .quick-updates .quick-updates-list .quick-update {
   cursor: pointer;
   display: block;
   float: left;
-  margin: 0 0 30px;
   text-align: center;
   width: 33.33334%;
 }

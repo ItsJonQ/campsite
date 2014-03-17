@@ -1,14 +1,16 @@
 // Quick Updates
 .quick-updates {
     .quick-updates-list {
+        border-bottom: 1px solid $border-color-main;
         @include list-unstyled;
         overflow: hidden;
+        margin: 0 0 $gutter;
+        padding-bottom: $gutter-half;
 
         .quick-update {
             cursor: pointer;
             display: block;
             float: left;
-            margin: 0 0 $gutter;
             text-align: center;
             width: 33.33334%;
 

@@ -11,6 +11,7 @@
         float: left;
         display: inline-block;
         margin: 10px 20px;
+        width: 160px;
 
         a {
             background-position: 0px 0px;
@@ -29,6 +30,20 @@
             }
         }
 
+    }
+
+    .header-search {
+        float: left;
+        margin: 10px 10px 10px 0;
+
+        .header-search-input {
+            border: 1px solid darken($border-color-main, 12);
+            font-size: $font-size-small;
+            line-height: 1;
+            width: 500px;
+            padding: 5px 10px;
+            height: 30px;
+        }
     }
 
     .campfire {
