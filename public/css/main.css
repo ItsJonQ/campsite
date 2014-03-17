@@ -52,3 +52,32 @@ html, html body {
   text-rendering: optimizeLegibility;
   -webkit-tap-highlight-color: initial;
 }
+
+.main-header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 999999;
+  border-bottom: 1px solid #eeeeee;
+  height: 50px;
+}
+.main-header .logo {
+  display: inline-block;
+  margin: 10px 20px;
+}
+.main-header .logo a {
+  background-position: 0px 0px;
+  background: url("../../images/basecamp-logo-sm.png") center center no-repeat;
+  display: block;
+  margin: 0px;
+  padding: 0px;
+  text-indent: -9999em;
+  width: 130px;
+  height: 30px;
+  zoom: 1;
+}
+.main-header .logo a h1 {
+  margin: 0;
+  padding: 0;
+}

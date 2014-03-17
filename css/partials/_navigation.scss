@@ -1,0 +1,31 @@
+// Navigation
+
+.main-header {
+    @include position(fixed, 0, 0, false, 0, 999999);
+    border-bottom: 1px solid $border-color-main;
+    height: 50px;
+
+    .logo {
+
+        display: inline-block;
+        margin: 10px 20px;
+
+        a {
+            background-position: 0px 0px;
+            background: url('../../images/basecamp-logo-sm.png') center center no-repeat;
+            display: block;
+            margin: 0px;
+            padding: 0px;
+            text-indent: -9999em;
+            width: 130px;
+            height: 30px;
+            zoom: 1;
+
+            h1 {
+                margin: 0;
+                padding: 0
+            }
+        }
+
+    }
+}

@@ -1,3 +1,15 @@
+// Positioning
+
+    // Position + Z-index
+    @mixin position($pos: relative, $t: false, $r: false, $b: false, $l: false, $z: false) {
+        position: $pos;
+        @if($t)     { top: $t; }
+        @if($r)     { right: $r; }
+        @if($b)     { bottom: $b; }
+        @if($l)     { left: $l; }
+        @if($z)     { z-index: $z; }
+    }
+
 
 // Aesthetics
 
