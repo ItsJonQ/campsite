@@ -15,7 +15,7 @@ module.exports = function(grunt) {
             files: ['js/**/*.js'],
             options: {
                 force: true,
-                strict: true,
+                strict: false, // switched it to false for browserify's AMD
                 smarttabs: true,
                 globals: {
                     _: true,
