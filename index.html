@@ -91,30 +91,10 @@
                     <div class="to-dos" id="to-dos">
 
                         <!-- To-do List Container -->
-                        <div class="to-do-list-container">
-
-                            <!-- To-do: Header -->
-                            <header class="header urgent">
-                                <h4 class="header-title">Due Today</h4>
-                            </header>
-
-                            <!-- To-Do List (Due Today) -->
-                            <ul class="to-do-list" id="to-do-due-today" data-bind="template: { name: 'template-to-do-list', foreach: models }"></ul>
-
-                        </div>
+                        <div class="to-do-list-container" id="to-do-due-today" data-bind="template: { name: 'template-to-do' }"></div>
 
                         <!-- To-do List Container -->
-                        <div class="to-do-list-container">
-
-                            <!-- To-do: Header -->
-                            <header class="header">
-                                <h4 class="header-title">Due This Week</h4>
-                            </header>
-
-                            <!-- To-Do List (Due This Week) -->
-                            <ul class="to-do-list" id="to-do-due-this-week" data-bind="template: { name: 'template-to-do-list', foreach: models }"></ul>
-
-                        </div>
+                        <div class="to-do-list-container" id="to-do-due-this-week" data-bind="template: { name: 'template-to-do' }"></div>
 
                     </div>
 
@@ -132,19 +112,13 @@
                     <div class="discussions" id="discussions">
 
                         <!-- Chat (Comment Container) -->
-                        <div class="chat" id="chat-windows-phone-8-touch-response">
+                        <div class="chat" id="chat-windows-phone-8-touch-response" data-bind="template: { name: 'template-comment' }"></div>
 
-                            <!-- Comment Topic -->
-                            <header class="header">
-                                <h4 class="header-title">Windows Phone 8 Touch Response</h4>
-                            </header>
+                        <!-- Chat (Comment Container) -->
+                        <div class="chat" id="chat-seo-tips" data-bind="template: { name: 'template-comment' }"></div>
 
-                            <!-- Comments List -->
-                            <section class="comment-list"  id="chat-windows-phone-8-touch-response-comments" data-bind="template: { name: 'template-comment-list', foreach: models }">
-
-                            </section>
-
-                        </div>
+                        <!-- Chat (Comment Container) -->
+                        <div class="chat" id="chat-snacks-what-to-get" data-bind="template: { name: 'template-comment' }"></div>
 
                     </div>
 
@@ -155,9 +129,24 @@
 
         </div>
 
-
     </section>
 
+
+
+
+    <!-- Template: Comments -->
+    <script type="text/html" id="template-comment">
+        <!-- Comment Topic -->
+        <header class="header">
+            <h4 class="header-title" data-bind="text: todo"></h4>
+        </header>
+
+        <!-- Comments List -->
+        <section class="comment-list"  id="chat-windows-phone-8-touch-response-comments" data-bind="template: { name: 'template-comment-list', foreach: models }"></section>
+    </script>
+
+
+    <!-- Template: Comments - Item -->
     <script type="text/html" id="template-comment-list">
 
         <!-- Comment -->
@@ -183,7 +172,7 @@
 
 
                 <!-- User Comments -->
-                <p data-bind="text: attributes.comment"></p>
+                <p data-bind="html: attributes.comment"></p>
 
             </section>
 
@@ -191,6 +180,20 @@
 
     </script>
 
+
+    <!-- Template: To-Dos -->
+    <script type="text/html" id="template-to-do">
+        <!-- To-do: Header -->
+        <header class="header urgent">
+            <h4 class="header-title" data-bind="text: list"></h4>
+        </header>
+
+        <!-- To-Do List (Due Today) -->
+        <ul class="to-do-list" data-bind="template: { name: 'template-to-do-list', foreach: models }"></ul>
+    </script>
+
+
+    <!-- Template: To-Do - Item -->
     <script type="text/html" id="template-to-do-list">
 
         <!-- To-Do Task -->

@@ -28,9 +28,21 @@ init = function() {
     });
 
     // Creating the comments
-    var comments = new Comments({
-        el: '#chat-windows-phone-8-touch-response-comments',
+    var commentsWindowsPhone = new Comments({
+        el: '#chat-windows-phone-8-touch-response',
         discussionID: 0
+    });
+
+    // Creating the comments
+    var commentsSnacks = new Comments({
+        el: '#chat-snacks-what-to-get',
+        discussionID: 1
+    });
+
+    // Creating the comments
+    var commentsSEO = new Comments({
+        el: '#chat-seo-tips',
+        discussionID: 2
     });
 
 };

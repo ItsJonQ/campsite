@@ -29,9 +29,21 @@ init = function() {
     });
 
     // Creating the comments
-    var comments = new Comments({
-        el: '#chat-windows-phone-8-touch-response-comments',
+    var commentsWindowsPhone = new Comments({
+        el: '#chat-windows-phone-8-touch-response',
         discussionID: 0
+    });
+
+    // Creating the comments
+    var commentsSnacks = new Comments({
+        el: '#chat-snacks-what-to-get',
+        discussionID: 1
+    });
+
+    // Creating the comments
+    var commentsSEO = new Comments({
+        el: '#chat-seo-tips',
+        discussionID: 2
     });
 
 };
@@ -68,6 +80,9 @@ Comments = function(attributes) {
     // Defining the discussion ID
     this.discussionID = null;
 
+    // Defining the todo (Discussion title)
+    this.todo = null;
+
     // Defining the initialize method
     this.initialize = function(attributes) {
 
@@ -90,8 +105,14 @@ Comments = function(attributes) {
             // Defining and setting the $El for the collection
             self.set$el();
 
+            // Defining the discussion thread
+            var discussion = data.discussions[self.discussionID];
+
+            // Set the todo discussion title if applicable
+            if(discussion.todo) self.todo = discussion.todo;
+
             // Define comment items from the data
-            var comments = data.discussions[self.discussionID].chat;
+            var comments = discussion.chat;
 
             // Looping through all the comment items
             for(var i = 0, len = comments.length; i < len; i++) {
@@ -179,6 +200,9 @@ ToDos = function(attributes) {
     // Defining the list ID
     this.listID = null;
 
+    // Defining the list (To-do title)
+    this.list = null;
+
     // Defining the initialize method
     this.initialize = function(attributes) {
 
@@ -201,8 +225,14 @@ ToDos = function(attributes) {
             // Defining and setting the $El for the collection
             self.set$el();
 
+            // Defining the to-do list from the data
+            var todoList = data.todos[self.listID];
+
             // Define todo items from the data
-            var todos = data.todos[self.listID].todos;
+            var todos = todoList.todos;
+
+            // Set the todo list title if applicable
+            if(todoList.list) self.list = todoList.list;
 
             // Looping through all the todo items
             for(var i = 0, len = todos.length; i < len; i++) {

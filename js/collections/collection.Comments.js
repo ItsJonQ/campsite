@@ -27,6 +27,9 @@ Comments = function(attributes) {
     // Defining the discussion ID
     this.discussionID = null;
 
+    // Defining the todo (Discussion title)
+    this.todo = null;
+
     // Defining the initialize method
     this.initialize = function(attributes) {
 
@@ -49,8 +52,14 @@ Comments = function(attributes) {
             // Defining and setting the $El for the collection
             self.set$el();
 
+            // Defining the discussion thread
+            var discussion = data.discussions[self.discussionID];
+
+            // Set the todo discussion title if applicable
+            if(discussion.todo) self.todo = discussion.todo;
+
             // Define comment items from the data
-            var comments = data.discussions[self.discussionID].chat;
+            var comments = discussion.chat;
 
             // Looping through all the comment items
             for(var i = 0, len = comments.length; i < len; i++) {

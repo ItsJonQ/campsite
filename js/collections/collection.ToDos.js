@@ -27,6 +27,9 @@ ToDos = function(attributes) {
     // Defining the list ID
     this.listID = null;
 
+    // Defining the list (To-do title)
+    this.list = null;
+
     // Defining the initialize method
     this.initialize = function(attributes) {
 
@@ -49,8 +52,14 @@ ToDos = function(attributes) {
             // Defining and setting the $El for the collection
             self.set$el();
 
+            // Defining the to-do list from the data
+            var todoList = data.todos[self.listID];
+
             // Define todo items from the data
-            var todos = data.todos[self.listID].todos;
+            var todos = todoList.todos;
+
+            // Set the todo list title if applicable
+            if(todoList.list) self.list = todoList.list;
 
             // Looping through all the todo items
             for(var i = 0, len = todos.length; i < len; i++) {
