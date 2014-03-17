@@ -104,8 +104,11 @@ Messages.prototype.add = function(model) {
 };
 
 // fn: adding a new message to the collection
-Messages.prototype.addNewMessage = function() {
+Messages.prototype.addNewMessage = function(model) {
     var self = this;
+
+    // If model is defined, add the model to the collection
+    if(model !== self) return self.add(model);
 
     // Defining the message (creating a copy of the one bound to the collection)
     var msg = self.message();

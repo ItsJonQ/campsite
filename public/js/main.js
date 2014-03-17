@@ -3,6 +3,8 @@
 // Defining the init method
 var init;
 
+var campfireMessage;
+
 init = function() {
 
     // Defining the start message (testing Browserify)
@@ -16,6 +18,9 @@ init = function() {
     var ToDos = require('./collections/collection.ToDos');
     var Comments = require('./collections/collection.Comments');
     var Messages = require('./collections/collection.Messages');
+
+    // Requiring the chatBot
+    var chatBot = require('./modules/chatBot');
 
 
     // Creating the todo lists
@@ -47,20 +52,32 @@ init = function() {
         discussionID: 2
     });
 
-    // Creating the Campfire messages
-    var campfireMessages = new Messages({
-        el: '#campfire-section'
-    });
+    // Startin up the chatBot!
+    // chatBot.init();
 
-    $('#campfire-logo').on('click', function() {
-        $('body').toggleClass('campfire-active');
-    });
 
 };
 
 // Start 'er up!!
 init();
-},{"./collections/collection.Comments":2,"./collections/collection.Messages":3,"./collections/collection.ToDos":4,"./utils/utils.test":9}],2:[function(require,module,exports){
+
+},{"./collections/collection.Comments":3,"./collections/collection.Messages":4,"./collections/collection.ToDos":5,"./modules/chatBot":9,"./utils/utils.test":11}],2:[function(require,module,exports){
+
+// Defining the init method
+var campfireMessage;
+var Messages = require('../collections/collection.Messages');
+
+// Creating the Campfire messages
+Campfire = new Messages({
+    el: '#campfire-section'
+});
+
+$('#campfire-logo').on('click', function() {
+    $('body').toggleClass('campfire-active');
+});
+
+module.exports = Campfire;
+},{"../collections/collection.Messages":4}],3:[function(require,module,exports){
 // Collections: Comments
 
 // Requiring the Fetch method
@@ -180,7 +197,7 @@ Comments.prototype.set$el = function() {
 
 // Exporting the collection
 module.exports = Comments;
-},{"../models/model.Comment":5,"../utils/utils.fetch":8}],3:[function(require,module,exports){
+},{"../models/model.Comment":6,"../utils/utils.fetch":10}],4:[function(require,module,exports){
     // Collections: Messages
 
 // Requiring the Fetch method
@@ -287,8 +304,11 @@ Messages.prototype.add = function(model) {
 };
 
 // fn: adding a new message to the collection
-Messages.prototype.addNewMessage = function() {
+Messages.prototype.addNewMessage = function(model) {
     var self = this;
+
+    // If model is defined, add the model to the collection
+    if(model !== self) return self.add(model);
 
     // Defining the message (creating a copy of the one bound to the collection)
     var msg = self.message();
@@ -334,7 +354,7 @@ Messages.prototype.set$el = function() {
 
 // Exporting the collection
 module.exports = Messages;
-},{"../models/model.Message":6,"../utils/utils.fetch":8}],4:[function(require,module,exports){
+},{"../models/model.Message":7,"../utils/utils.fetch":10}],5:[function(require,module,exports){
 // Collections: ToDos
 
 // Requiring the Fetch method
@@ -487,7 +507,7 @@ ToDos.prototype.makeSortable = function() {
 
 // Exporting the collection
 module.exports = ToDos;
-},{"../models/model.ToDo":7,"../utils/utils.fetch":8}],5:[function(require,module,exports){
+},{"../models/model.ToDo":8,"../utils/utils.fetch":10}],6:[function(require,module,exports){
 // Model: Comment
 
 // Defining the model name
@@ -523,7 +543,7 @@ Comment = function(attributes) {
 
 // Exporting the model
 module.exports = Comment;
-},{}],6:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 // Model: Message
 
 // Defining the model name
@@ -559,7 +579,7 @@ Message = function(attributes) {
 
 // Exporting the model
 module.exports = Message;
-},{}],7:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 // Model: ToDo
 
 // Defining the model name
@@ -611,12 +631,62 @@ ToDo.prototype.toggleDone = function() {
 
 // Exporting the model
 module.exports = ToDo;
-},{}],8:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
+// ChatBot (Used to automatically add messages to Campfire for demo)
+
+// Requiring Campfire (Collection)
+var Campfire = require('../apps/app.Campfire');
+
+// Requiring the Message model
+var Message = require('../models/model.Message');
+
+// Requiring the fetch util
+var fetch = require('../utils/utils.fetch');
+
+// Fetch the chatbot Data
+var init = function() {
+    // Return the fetch to chatbot
+    return fetch.chatBot(function(data) {
+
+        // fn: Generating the message model from the random data
+        var autoMessage = function() {
+            var msg = new Message(_.sample(data.messages, 1)[0]);
+            return Campfire.addNewMessage(msg);
+        };
+
+        // Loop: Rnadom loop to insert messages into campfire
+        (function loop() {
+
+            // Random integer
+            var rand = Math.round(Math.random() * (3000 - 500)) + 1500;
+
+            // Set timeout method with random integer
+            setTimeout(function() {
+
+                // Fire the autoMessage method
+                autoMessage();
+
+                // Self invoke the loop() to keep it going
+                loop();
+
+            }, rand);
+
+        })();
+
+    });
+
+};
+
+init();
+
+// Export the init method
+module.exports = init;
+
+
+
+},{"../apps/app.Campfire":2,"../models/model.Message":7,"../utils/utils.fetch":10}],10:[function(require,module,exports){
 // Fetch
 // Fetch will be used to get fake data to populate the Basecamp dash
-
-// Defining the fetch method
-var fetch;
 
 // Defining fetching of To-Do
 var toDo;
@@ -626,6 +696,7 @@ var comments;
 
 // Defining fetching of Messages
 var messages;
+var chatBot;
 
 // Fetch will use the jQuery .ajax method to retrieve data
 
@@ -694,15 +765,35 @@ chatLog = function(callback) {
 
 };
 
-fetch = {
-    comments: comments,
-    chatLog: chatLog,
-    toDo: toDo
+chatBot = function(callback) {
+
+    // Defining the URl to fetch from
+    var url = 'js/data/testData.chatBot.js';
+
+    // Return the $.ajax method
+    return $.ajax({
+        dataType: 'json',
+        url: url,
+        success: function(data) {
+
+            // Return the callback func if defined
+            if(callback && typeof callback === 'function') {
+                // Returning with data
+                return callback(data);
+            }
+        }
+    });
+
 };
 
 // Exporting the fetch API
-module.exports = fetch;
-},{}],9:[function(require,module,exports){
+module.exports = {
+    comments: comments,
+    chatLog: chatLog,
+    chatBot: chatBot,
+    toDo: toDo
+};
+},{}],11:[function(require,module,exports){
 module.exports = function() {
     return console.log('Start Campsite!');
 };

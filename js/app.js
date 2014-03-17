@@ -2,6 +2,8 @@
 // Defining the init method
 var init;
 
+var campfireMessage;
+
 init = function() {
 
     // Defining the start message (testing Browserify)
@@ -15,6 +17,9 @@ init = function() {
     var ToDos = require('./collections/collection.ToDos');
     var Comments = require('./collections/collection.Comments');
     var Messages = require('./collections/collection.Messages');
+
+    // Requiring the chatBot
+    var chatBot = require('./modules/chatBot');
 
 
     // Creating the todo lists
@@ -46,14 +51,9 @@ init = function() {
         discussionID: 2
     });
 
-    // Creating the Campfire messages
-    var campfireMessages = new Messages({
-        el: '#campfire-section'
-    });
+    // Startin up the chatBot!
+    // chatBot.init();
 
-    $('#campfire-logo').on('click', function() {
-        $('body').toggleClass('campfire-active');
-    });
 
 };
 

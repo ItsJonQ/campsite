@@ -1,9 +1,6 @@
 // Fetch
 // Fetch will be used to get fake data to populate the Basecamp dash
 
-// Defining the fetch method
-var fetch;
-
 // Defining fetching of To-Do
 var toDo;
 
@@ -12,6 +9,7 @@ var comments;
 
 // Defining fetching of Messages
 var messages;
+var chatBot;
 
 // Fetch will use the jQuery .ajax method to retrieve data
 
@@ -80,11 +78,31 @@ chatLog = function(callback) {
 
 };
 
-fetch = {
-    comments: comments,
-    chatLog: chatLog,
-    toDo: toDo
+chatBot = function(callback) {
+
+    // Defining the URl to fetch from
+    var url = 'js/data/testData.chatBot.js';
+
+    // Return the $.ajax method
+    return $.ajax({
+        dataType: 'json',
+        url: url,
+        success: function(data) {
+
+            // Return the callback func if defined
+            if(callback && typeof callback === 'function') {
+                // Returning with data
+                return callback(data);
+            }
+        }
+    });
+
 };
 
 // Exporting the fetch API
-module.exports = fetch;
+module.exports = {
+    comments: comments,
+    chatLog: chatLog,
+    chatBot: chatBot,
+    toDo: toDo
+};
