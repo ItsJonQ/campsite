@@ -28,6 +28,8 @@
 
         .to-do-task {
             @include disable-selection;
+            background-color: #fff;
+            cursor: pointer;
             padding: 10px 0px 10px $gutter-half ;
             border-bottom: 1px solid $border-color-light;
             overflow: hidden;
