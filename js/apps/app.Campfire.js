@@ -8,8 +8,4 @@ Campfire = new Messages({
     el: '#campfire-section'
 });
 
-$('#campfire-logo').on('click', function() {
-    $('body').toggleClass('campfire-active');
-});
-
 module.exports = Campfire;

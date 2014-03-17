@@ -48,6 +48,14 @@
                     "project": "To Do",
                     "title": "Oh! Don't forget to check out Campfire (top right)",
                     "status": "normal"
+                },
+
+                {
+                    "assigned": "Basecamp Team",
+                    "commentCount": 3,
+                    "project": "To Do",
+                    "title": "P.S. You can also do ALT + C on your keyboard to toggle Campfire. Keyboard shortcuts pwn all things.",
+                    "status": "normal"
                 }
 
             ]

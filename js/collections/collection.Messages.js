@@ -134,7 +134,6 @@ Messages.prototype.addNewMessage = function(model) {
 };
 
 
-
 // fn: Setting the $el of the model
 Messages.prototype.set$el = function() {
 

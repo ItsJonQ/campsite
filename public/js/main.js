@@ -22,6 +22,9 @@ init = function() {
     // Requiring the chatBot
     var chatBot = require('./modules/chatBot');
 
+    // Requiring events
+    var events = require('./events/events');
+
 
     // Creating the todo lists
     var toDoDueToday = new ToDos({
@@ -61,7 +64,7 @@ init = function() {
 // Start 'er up!!
 init();
 
-},{"./collections/collection.Comments":3,"./collections/collection.Messages":4,"./collections/collection.ToDos":5,"./modules/chatBot":9,"./utils/utils.test":11}],2:[function(require,module,exports){
+},{"./collections/collection.Comments":3,"./collections/collection.Messages":4,"./collections/collection.ToDos":5,"./events/events":7,"./modules/chatBot":12,"./utils/utils.test":14}],2:[function(require,module,exports){
 
 // Defining the init method
 var campfireMessage;
@@ -70,10 +73,6 @@ var Messages = require('../collections/collection.Messages');
 // Creating the Campfire messages
 Campfire = new Messages({
     el: '#campfire-section'
-});
-
-$('#campfire-logo').on('click', function() {
-    $('body').toggleClass('campfire-active');
 });
 
 module.exports = Campfire;
@@ -197,7 +196,7 @@ Comments.prototype.set$el = function() {
 
 // Exporting the collection
 module.exports = Comments;
-},{"../models/model.Comment":6,"../utils/utils.fetch":10}],4:[function(require,module,exports){
+},{"../models/model.Comment":9,"../utils/utils.fetch":13}],4:[function(require,module,exports){
     // Collections: Messages
 
 // Requiring the Fetch method
@@ -334,7 +333,6 @@ Messages.prototype.addNewMessage = function(model) {
 };
 
 
-
 // fn: Setting the $el of the model
 Messages.prototype.set$el = function() {
 
@@ -354,7 +352,7 @@ Messages.prototype.set$el = function() {
 
 // Exporting the collection
 module.exports = Messages;
-},{"../models/model.Message":7,"../utils/utils.fetch":10}],5:[function(require,module,exports){
+},{"../models/model.Message":10,"../utils/utils.fetch":13}],5:[function(require,module,exports){
 // Collections: ToDos
 
 // Requiring the Fetch method
@@ -507,7 +505,74 @@ ToDos.prototype.makeSortable = function() {
 
 // Exporting the collection
 module.exports = ToDos;
-},{"../models/model.ToDo":8,"../utils/utils.fetch":10}],6:[function(require,module,exports){
+},{"../models/model.ToDo":11,"../utils/utils.fetch":13}],6:[function(require,module,exports){
+
+// Getting the campfire icon from the DOM
+var campfireIcon = document.getElementById('campfire-logo');
+
+// fn: Method to toggle Campfire (show / hide)
+var toggleCampfire = function() {
+    document.body.classList.toggle('campfire-active');
+};
+
+// fn: Method to bind clicking the campfire icon to toggle Campfire
+var campfireClickBind = function() {
+    return campfireIcon.addEventListener('click', toggleCampfire);
+};
+
+// fn: Method to unbind clicking the campfire icon to toggle Campfire
+var campfireClickUnbind = function() {
+    return campfireIcon.removeEventListener('click', toggleCampfire);
+};
+
+// Exporting the methods
+module.exports = {
+    clickSet: campfireClickBind,
+    clickUnset: campfireClickUnbind,
+    el: campfireIcon,
+    toggle: toggleCampfire
+};
+
+},{}],7:[function(require,module,exports){
+
+// Requiring events for campfire
+var eventCampfire = require('./events.campfire.js');
+
+var eventKeypress = require('./events.keypress.js');
+
+
+
+var init = function() {
+    eventCampfire.clickSet();
+};
+
+// Initialize events to setup handlers
+init();
+
+// Exporting events
+module.exports = {
+    campfire: eventCampfire
+};
+},{"./events.campfire.js":6,"./events.keypress.js":8}],8:[function(require,module,exports){
+// Requiring events for campfire
+var eventCampfire = require('./events.campfire.js');
+var Campfire = require('../apps/app.Campfire');
+
+// fn: Toggling Campfire with Keyboard
+var campfireToggle = function() {
+    document.addEventListener('keydown', function(e) {
+        // if keyPress is "c" with the ALT key
+        if(e.keyCode === 67 & e.altKey === true) {
+            // Toggle campfire
+            return eventCampfire.toggle();
+        }
+
+    });
+};
+
+// Bind the keypress Event to toggle Campfire
+campfireToggle();
+},{"../apps/app.Campfire":2,"./events.campfire.js":6}],9:[function(require,module,exports){
 // Model: Comment
 
 // Defining the model name
@@ -543,7 +608,7 @@ Comment = function(attributes) {
 
 // Exporting the model
 module.exports = Comment;
-},{}],7:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 // Model: Message
 
 // Defining the model name
@@ -579,7 +644,7 @@ Message = function(attributes) {
 
 // Exporting the model
 module.exports = Message;
-},{}],8:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 // Model: ToDo
 
 // Defining the model name
@@ -631,7 +696,7 @@ ToDo.prototype.toggleDone = function() {
 
 // Exporting the model
 module.exports = ToDo;
-},{}],9:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 // ChatBot (Used to automatically add messages to Campfire for demo)
 
 // Requiring Campfire (Collection)
@@ -684,7 +749,7 @@ module.exports = init;
 
 
 
-},{"../apps/app.Campfire":2,"../models/model.Message":7,"../utils/utils.fetch":10}],10:[function(require,module,exports){
+},{"../apps/app.Campfire":2,"../models/model.Message":10,"../utils/utils.fetch":13}],13:[function(require,module,exports){
 // Fetch
 // Fetch will be used to get fake data to populate the Basecamp dash
 
@@ -793,7 +858,7 @@ module.exports = {
     chatBot: chatBot,
     toDo: toDo
 };
-},{}],11:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 module.exports = function() {
     return console.log('Start Campsite!');
 };

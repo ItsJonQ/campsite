@@ -21,6 +21,9 @@ init = function() {
     // Requiring the chatBot
     var chatBot = require('./modules/chatBot');
 
+    // Requiring events
+    var events = require('./events/events');
+
 
     // Creating the todo lists
     var toDoDueToday = new ToDos({
