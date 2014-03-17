@@ -49,8 +49,6 @@ Comments = function(attributes) {
             // Defining and setting the $El for the collection
             self.set$el();
 
-            console.log(self);
-
             // Define comment items from the data
             var comments = data.discussions[self.discussionID].chat;
 

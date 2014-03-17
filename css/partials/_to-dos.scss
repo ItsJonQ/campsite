@@ -52,6 +52,8 @@
                 .to-do-title {
                     .title {
                         margin-top: 0;
+                        margin-bottom: 5px;
+                        line-height: 1.4em;
                     }
                 }
 
@@ -68,6 +70,10 @@
                 text-align: right;
                 margin-top: 0px;
                 line-height: 1;
+
+                .user-name {
+                    min-width: 30px;
+                }
 
                 a {
                     color: $font-color-main;

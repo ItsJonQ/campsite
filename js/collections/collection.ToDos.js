@@ -24,6 +24,9 @@ ToDos = function(attributes) {
     // Defining the cached $el, based on el
     this.$el = null;
 
+    // Defining the list ID
+    this.listID = null;
+
     // Defining the initialize method
     this.initialize = function(attributes) {
 
@@ -40,11 +43,14 @@ ToDos = function(attributes) {
                 self = _.extend(self, attributes);
             }
 
+            // Return false if the discussionID was not defined
+            if(self.listID === null) return false;
+
             // Defining and setting the $El for the collection
             self.set$el();
 
             // Define todo items from the data
-            var todos = data.todos;
+            var todos = data.todos[self.listID].todos;
 
             // Looping through all the todo items
             for(var i = 0, len = todos.length; i < len; i++) {
@@ -108,7 +114,7 @@ ToDos.prototype.makeSortable = function() {
     // Return false if the todo list in empty
     if(!this.models.length && !this.$el) return false;
 
-    this.$el.sortable().disableSelection();
+    this.$el.sortable({ connectWith: '.to-do-list' }).disableSelection();
 
     return this;
 

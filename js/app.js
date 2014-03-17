@@ -10,8 +10,15 @@ startMessage();
 
 // Requiring the ToDo collecton
 
-var toDoDueToday = new ToDos({ el: '#to-do-due-today' });
-var toDoDueThisWeek = new ToDos({ el: '#to-do-due-this-week' });
+var toDoDueToday = new ToDos({
+    el: '#to-do-due-today',
+    listID: 0
+});
+
+var toDoDueThisWeek = new ToDos({
+    el: '#to-do-due-this-week',
+    listID: 1
+});
 
 
 var comments = new Comments({

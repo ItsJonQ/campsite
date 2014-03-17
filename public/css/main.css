@@ -175,6 +175,8 @@ html, html body {
 }
 .to-do-list-container .to-do-list .to-do-task .to-do-content .to-do-title .title {
   margin-top: 0;
+  margin-bottom: 5px;
+  line-height: 1.4em;
 }
 .to-do-list-container .to-do-list .to-do-task .to-do-content .to-do-meta {
   color: #aaaaaa;
@@ -187,6 +189,9 @@ html, html body {
   text-align: right;
   margin-top: 0px;
   line-height: 1;
+}
+.to-do-list-container .to-do-list .to-do-task .to-do-assigned .user-name {
+  min-width: 30px;
 }
 .to-do-list-container .to-do-list .to-do-task .to-do-assigned a {
   color: #666666;
