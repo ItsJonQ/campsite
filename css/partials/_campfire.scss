@@ -26,6 +26,37 @@ body {
     .chat-log-container {
         @include position(absolute, 50px, 0, 100px, 0, 3);
         overflow: hidden;
-        padding: 0 $gutter-half;
+        padding: 0 10px;
+    }
+
+    .chat-log {
+        // .chat-message:nth-child(odd) {
+        //     background: $bg-color-lighter;
+        // }
+    }
+
+    .chat-message {
+        border-bottom: 1px dotted $border-color-main;
+        font-size: $font-size-small;
+        padding: 5px 10px;
+        overflow: hidden;
+
+        .timestamp {
+            font-size: $font-size-x-small - 1;
+            color: $font-color-light;
+        }
+
+        .user {
+            color: $font-color-dark;
+            font-weight: bold;
+            float: left;
+            min-width: 60px;
+            margin-right: 10px;
+        }
+
+        .message {
+            overflow: hidden;
+            width: auto;
+        }
     }
 }

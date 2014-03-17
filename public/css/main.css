@@ -326,7 +326,28 @@ body .campfire-section {
   left: 0;
   z-index: 3;
   overflow: hidden;
-  padding: 0 15px;
+  padding: 0 10px;
+}
+.campfire-section .chat-message {
+  border-bottom: 1px dotted #eeeeee;
+  font-size: 14px;
+  padding: 5px 10px;
+  overflow: hidden;
+}
+.campfire-section .chat-message .timestamp {
+  font-size: 10px;
+  color: #aaaaaa;
+}
+.campfire-section .chat-message .user {
+  color: #222222;
+  font-weight: bold;
+  float: left;
+  min-width: 60px;
+  margin-right: 10px;
+}
+.campfire-section .chat-message .message {
+  overflow: hidden;
+  width: auto;
 }
 
 .ui-sortable-helper {
