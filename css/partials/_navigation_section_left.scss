@@ -1,0 +1,5 @@
+// Navigation (Section Left)
+
+.navigation-section-left {
+    @include position(fixed, $header-main-height, false, 0, 0, 555 );
+}

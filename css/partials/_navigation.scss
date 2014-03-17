@@ -3,7 +3,7 @@
 .main-header {
     @include position(fixed, 0, 0, false, 0, 999999);
     border-bottom: 1px solid $border-color-main;
-    height: 50px;
+    height: $header-main-height;
 
     .logo {
 
