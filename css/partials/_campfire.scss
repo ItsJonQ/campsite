@@ -53,11 +53,23 @@ body {
 
                 a {
                     background: $bg-color-light;
+                    color: lighten($font-color-dark, 35);
                     display: block;
                     padding: 8px 10px;
                     text-align: center;
 
+                    &.active {
+                        background: #fff;
+                        color: $font-color-link;
+                        border-top: 2px solid $font-color-link;
+
+                        &:hover {
+                            color: lighten($font-color-link, 12);
+                        }
+                    }
+
                     &:hover {
+                        color: lighten($font-color-dark, 20);
                         text-decoration: none;
                     }
                 }

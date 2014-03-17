@@ -355,11 +355,21 @@ body .campfire-section {
 }
 .campfire-section .chat-log-header .chat-header-tabs .chat-tab a {
   background: whitesmoke;
+  color: #7b7b7b;
   display: block;
   padding: 8px 10px;
   text-align: center;
 }
+.campfire-section .chat-log-header .chat-header-tabs .chat-tab a.active {
+  background: #fff;
+  color: #428bca;
+  border-top: 2px solid #428bca;
+}
+.campfire-section .chat-log-header .chat-header-tabs .chat-tab a.active:hover {
+  color: #72a8d7;
+}
 .campfire-section .chat-log-header .chat-header-tabs .chat-tab a:hover {
+  color: #555555;
   text-decoration: none;
 }
 .campfire-section .chat-log-container {
