@@ -8,6 +8,6 @@ startMessage();
 
 // Requiring the ToDo collecton
 
-window.a = new ToDos();
+window.a = new ToDos({ el: '#to-do-due-today' });
 
 console.log(a);

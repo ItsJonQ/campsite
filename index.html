@@ -99,44 +99,7 @@
                             </header>
 
                             <!-- To-Do List -->
-                            <ul class="to-do-list" id="to-do-due-today">
-
-                                <!-- To-Do Task -->
-                                <li class="to-do-task">
-
-                                    <!-- To-Do Action -->
-                                    <div class="to-do-action">
-                                        <input type="checkbox" tabindex="-1" name="done">
-                                    </div>
-
-                                    <!-- To-Do Assigned -->
-                                    <div class="to-do-assigned">
-                                        <!-- Username -->
-                                        <div class="user-name">
-                                            <a href="#">Jon Quach</a>
-                                        </div>
-                                        <!-- Comment Count -->
-                                        <div class="comments">
-                                            <a href="#">34 comments</a>
-                                        </div>
-                                    </div>
-
-                                    <!-- To-Do Content -->
-                                    <div class="to-do-content">
-
-                                        <!-- To-Do Title -->
-                                        <header class="to-do-title">
-                                            <h5 class="title">Task Name</h5>
-                                        </header>
-
-                                        <!-- To-Do Meta -->
-                                        <div class="to-do-meta">
-                                            Project Name
-                                        </div>
-
-                                    </div>
-
-                                </li>
+                            <ul class="to-do-list" id="to-do-due-today" data-bind="template: { name: 'template-to-do-list', foreach: models }">
 
                             </ul>
 
@@ -236,6 +199,46 @@
 
     </section>
 
+
+    <script type="text/html" id="template-to-do-list">
+
+        <!-- To-Do Task -->
+        <li class="to-do-task">
+
+            <!-- To-Do Action -->
+            <div class="to-do-action">
+                <input type="checkbox" tabindex="-1" name="done">
+            </div>
+
+            <!-- To-Do Assigned -->
+            <div class="to-do-assigned">
+                <!-- Username -->
+                <div class="user-name">
+                    <a href="#" data-bind="text: attributes.assigned"></a>
+                </div>
+                <!-- Comment Count -->
+                <div class="comments">
+                    <a href="#">34 comments</a>
+                </div>
+            </div>
+
+            <!-- To-Do Content -->
+            <div class="to-do-content">
+
+                <!-- To-Do Title -->
+                <header class="to-do-title">
+                    <h5 class="title" data-bind="text: attributes.title"></h5>
+                </header>
+
+                <!-- To-Do Meta -->
+                <div class="to-do-meta" data-bind="text: attributes.project">
+                </div>
+
+            </div>
+
+        </li>
+
+    </script>
 
 
 

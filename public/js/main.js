@@ -9,7 +9,7 @@ startMessage();
 
 // Requiring the ToDo collecton
 
-window.a = new ToDos();
+window.a = new ToDos({ el: '#to-do-due-today' });
 
 console.log(a);
 },{"./collections/collection.ToDos":2,"./utils/utils.test":5}],2:[function(require,module,exports){
@@ -25,7 +25,7 @@ var ToDo = require('../models/model.ToDo');
 var ToDos;
 
 // Creating the collection constructor
-ToDos = function() {
+ToDos = function(attributes) {
 
     // Defining the array collection to store models
     this.models = [];
@@ -33,13 +33,30 @@ ToDos = function() {
     // Defining the location where data will be fetched from
     this.fetch = fetch.toDo;
 
+    // Defining the el of the collection
+    this.el = null;
+
+    // Defining the cached $el, based on el
+    this.$el = null;
+
     // Defining the initialize method
-    this.initialize = function() {
+    this.initialize = function(attributes) {
 
         var self = this;
 
+        // Set the attributes if defined
+        if(attributes && typeof attributes === 'object') {
+            self = _.extend(self, attributes);
+        }
+
+        // Defining and setting the $El for the collection
+        self.set$el();
+
         // Fetch the data
         this.fetch(function(data) {
+
+            // Return false if data is not defined
+            if(!data) return false;
 
             // Define todo items from the data
             var todos = data.todos;
@@ -56,19 +73,24 @@ ToDos = function() {
                 });
 
                 // Adding the todo task to the models array
-                self.add(todo);
+                self.add.call(self, todo);
 
             }
 
+            // knockout bind this collection
+            ko.applyBindings(self);
+
+            self.makeSortable.call(self);
+
             // Returning the collection
-            return this;
+            return self;
 
         });
 
     };
 
     // Firing the init method on creation of the collection
-    this.initialize();
+    this.initialize(attributes);
 
 };
 
@@ -82,6 +104,33 @@ ToDos.prototype.add = function(model) {
 
     // Returning the collection
     return this;
+};
+
+ToDos.prototype.set$el = function() {
+
+    // Return the $el if it has already been set
+    if(this.$el) return this.$el;
+
+    // Set the $el if applicable
+    if(this.$el === null && this.el) this.$el = $(this.el);
+
+    // Return false if the $el is not valid
+    if(!this.$el) return false;
+
+    return this;
+
+};
+
+// fn: Method to allow jQuery UI sortable for list
+ToDos.prototype.makeSortable = function() {
+
+    // Return false if the todo list in empty
+    if(!this.models.length && !this.$el) return false;
+
+    this.$el.sortable().disableSelection();
+
+    return this;
+
 };
 
 // Exporting the collection
@@ -111,6 +160,8 @@ ToDo = function(attributes) {
             this.attributes = _.extend(this.attributes, attributes);
         }
 
+        // Returning the model
+        return this;
 
     };
 

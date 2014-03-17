@@ -22,6 +22,8 @@ ToDo = function(attributes) {
             this.attributes = _.extend(this.attributes, attributes);
         }
 
+        // Returning the model
+        return this;
 
     };
 
