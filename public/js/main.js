@@ -1,31 +1,43 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-// Defining the start message (testing Browserify)
-var startMessage = require('./utils/utils.test');
 
-var ToDos = require('./collections/collection.ToDos');
+// Defining the init method
+var init;
 
-var Comments = require('./collections/collection.Comments');
+init = function() {
 
-// Firing the startup message
-startMessage();
+    // Defining the start message (testing Browserify)
+    var startMessage = require('./utils/utils.test');
 
-// Requiring the ToDo collecton
-
-var toDoDueToday = new ToDos({
-    el: '#to-do-due-today',
-    listID: 0
-});
-
-var toDoDueThisWeek = new ToDos({
-    el: '#to-do-due-this-week',
-    listID: 1
-});
+    // Firing the startup message
+    startMessage();
 
 
-var comments = new Comments({
-    el: '#chat-windows-phone-8-touch-response-comments',
-    discussionID: 0
-});
+    // Requiring the collection constructors
+    var ToDos = require('./collections/collection.ToDos');
+    var Comments = require('./collections/collection.Comments');
+
+
+    // Creating the todo lists
+    var toDoDueToday = new ToDos({
+        el: '#to-do-due-today',
+        listID: 0
+    });
+
+    var toDoDueThisWeek = new ToDos({
+        el: '#to-do-due-this-week',
+        listID: 1
+    });
+
+    // Creating the comments
+    var comments = new Comments({
+        el: '#chat-windows-phone-8-touch-response-comments',
+        discussionID: 0
+    });
+
+};
+
+// Start 'er up!!
+init();
 },{"./collections/collection.Comments":2,"./collections/collection.ToDos":3,"./utils/utils.test":7}],2:[function(require,module,exports){
 // Collections: Comments
 
