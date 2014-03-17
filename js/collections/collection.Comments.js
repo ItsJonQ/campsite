@@ -1,28 +1,31 @@
-// Collections: ToDos
+// Collections: Comments
 
 // Requiring the Fetch method
 var fetch = require('../utils/utils.fetch');
 
 // Requiring the to-do model
-var ToDo = require('../models/model.ToDo');
+var Comment = require('../models/model.Comment');
 
 // Defining the collection
-var ToDos;
+var Comments;
 
 // Creating the collection constructor
-ToDos = function(attributes) {
+Comments = function(attributes) {
 
     // Defining the array collection to store models
     this.models = ko.observableArray();
 
     // Defining the location where data will be fetched from
-    this.fetch = fetch.toDo;
+    this.fetch = fetch.comments;
 
     // Defining the el of the collection
     this.el = null;
 
     // Defining the cached $el, based on el
     this.$el = null;
+
+    // Defining the discussion ID
+    this.discussionID = null;
 
     // Defining the initialize method
     this.initialize = function(attributes) {
@@ -40,28 +43,30 @@ ToDos = function(attributes) {
                 self = _.extend(self, attributes);
             }
 
+            // Return false if the discussionID was not defined
+            if(self.discussionID === null) return false;
+
             // Defining and setting the $El for the collection
             self.set$el();
 
-            // Define todo items from the data
-            var todos = data.todos;
+            console.log(self);
 
-            // Looping through all the todo items
-            for(var i = 0, len = todos.length; i < len; i++) {
+            // Define comment items from the data
+            var comments = data.discussions[self.discussionID].chat;
 
-                // Creating the new ToDo model
-                var todo = new ToDo(todos[i]);
+            // Looping through all the comment items
+            for(var i = 0, len = comments.length; i < len; i++) {
 
-                // Adding the todo task to the models array
-                self.add.call(self, todo);
+                // Creating the new comment model
+                var comment = new Comment(comments[i]);
+
+                // Adding the comment task to the models array
+                self.add.call(self, comment);
 
             }
 
             // knockout bind this collection
             ko.applyBindings(self, self.$el[0]);
-
-            // Make the collection sortable
-            self.makeSortable.call(self);
 
             // Returning the collection
             return self;
@@ -76,7 +81,7 @@ ToDos = function(attributes) {
 };
 
 // fn: Adding a model to the collection
-ToDos.prototype.add = function(model) {
+Comments.prototype.add = function(model) {
     // Return false if model is not defined
     if(!model) return false;
 
@@ -87,13 +92,14 @@ ToDos.prototype.add = function(model) {
     return this;
 };
 
-ToDos.prototype.set$el = function() {
+Comments.prototype.set$el = function() {
 
     // Return the $el if it has already been set
     if(this.$el) return this.$el;
 
     // Set the $el if applicable
     if(this.$el === null && this.el) this.$el = $(this.el);
+
 
     // Return false if the $el is not valid
     if(!this.$el) return false;
@@ -102,17 +108,5 @@ ToDos.prototype.set$el = function() {
 
 };
 
-// fn: Method to allow jQuery UI sortable for list
-ToDos.prototype.makeSortable = function() {
-
-    // Return false if the todo list in empty
-    if(!this.models.length && !this.$el) return false;
-
-    this.$el.sortable().disableSelection();
-
-    return this;
-
-};
-
 // Exporting the collection
-module.exports = ToDos;
+module.exports = Comments;

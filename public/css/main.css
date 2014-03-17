@@ -125,6 +125,9 @@ html, html body {
   padding: 30px;
 }
 
+.to-do-list-container {
+  margin-bottom: 15px;
+}
 .to-do-list-container .header.urgent {
   border-left: 2px solid #e74c3c;
 }
