@@ -14,6 +14,7 @@ init = function() {
     // Requiring the collection constructors
     var ToDos = require('./collections/collection.ToDos');
     var Comments = require('./collections/collection.Comments');
+    var Messages = require('./collections/collection.Messages');
 
 
     // Creating the todo lists
@@ -43,6 +44,11 @@ init = function() {
     var commentsSEO = new Comments({
         el: '#chat-seo-tips',
         discussionID: 2
+    });
+
+    // Creating the Campfire messages
+    var campfireMessages = new Messages({
+        el: '#campfire-chat-log'
     });
 
 };

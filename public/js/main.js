@@ -15,6 +15,7 @@ init = function() {
     // Requiring the collection constructors
     var ToDos = require('./collections/collection.ToDos');
     var Comments = require('./collections/collection.Comments');
+    var Messages = require('./collections/collection.Messages');
 
 
     // Creating the todo lists
@@ -46,11 +47,16 @@ init = function() {
         discussionID: 2
     });
 
+    // Creating the Campfire messages
+    var campfireMessages = new Messages({
+        el: '#campfire-chat-log'
+    });
+
 };
 
 // Start 'er up!!
 init();
-},{"./collections/collection.Comments":2,"./collections/collection.ToDos":3,"./utils/utils.test":7}],2:[function(require,module,exports){
+},{"./collections/collection.Comments":2,"./collections/collection.Messages":3,"./collections/collection.ToDos":4,"./utils/utils.test":9}],2:[function(require,module,exports){
 // Collections: Comments
 
 // Requiring the Fetch method
@@ -170,7 +176,109 @@ Comments.prototype.set$el = function() {
 
 // Exporting the collection
 module.exports = Comments;
-},{"../models/model.Comment":4,"../utils/utils.fetch":6}],3:[function(require,module,exports){
+},{"../models/model.Comment":5,"../utils/utils.fetch":8}],3:[function(require,module,exports){
+// Collections: Messages
+
+// Requiring the Fetch method
+var fetch = require('../utils/utils.fetch');
+
+// Requiring the message model
+var Message = require('../models/model.Message');
+
+// Defining the collection
+var Messages;
+
+// Creating the collection constructor
+Messages = function(attributes) {
+
+    // Defining the array collection to store models
+    this.models = ko.observableArray();
+
+    // Defining the location where data will be fetched from
+    this.fetch = fetch.chatLog;
+
+    // Defining the el of the collection
+    this.el = null;
+
+    // Defining the cached $el, based on el
+    this.$el = null;
+
+    // Defining the initialize method
+    this.initialize = function(attributes) {
+
+        var self = this;
+
+        // Fetch the data
+        this.fetch(function(data) {
+
+            // Return false if data is not defined
+            if(!data) return false;
+
+            // Set the attributes if defined
+            if(attributes && typeof attributes === 'object') {
+                self = _.extend(self, attributes);
+            }
+
+            // Defining and setting the $El for the collection
+            self.set$el();
+
+            // Looping through all the message items
+            for(var i = 0, len = data.messages.length; i < len; i++) {
+
+                // Creating the new message model
+                var message = new Message(data.messages[i]);
+
+                // Adding the message task to the models array
+                self.add.call(self, message);
+
+            }
+
+            // knockout bind this collection
+            ko.applyBindings(self, self.$el[0]);
+
+            // Returning the collection
+            return self;
+
+        });
+
+    };
+
+    // Firing the init method on creation of the collection
+    this.initialize(attributes);
+
+};
+
+// fn: Adding a model to the collection
+Messages.prototype.add = function(model) {
+    // Return false if model is not defined
+    if(!model) return false;
+
+    // Adding the model to the models array
+    this.models.push(model);
+
+    // Returning the collection
+    return this;
+};
+
+Messages.prototype.set$el = function() {
+
+    // Return the $el if it has already been set
+    if(this.$el) return this.$el;
+
+    // Set the $el if applicable
+    if(this.$el === null && this.el) this.$el = $(this.el);
+
+
+    // Return false if the $el is not valid
+    if(!this.$el) return false;
+
+    return this;
+
+};
+
+// Exporting the collection
+module.exports = Messages;
+},{"../models/model.Message":6,"../utils/utils.fetch":8}],4:[function(require,module,exports){
 // Collections: ToDos
 
 // Requiring the Fetch method
@@ -323,7 +431,7 @@ ToDos.prototype.makeSortable = function() {
 
 // Exporting the collection
 module.exports = ToDos;
-},{"../models/model.ToDo":5,"../utils/utils.fetch":6}],4:[function(require,module,exports){
+},{"../models/model.ToDo":7,"../utils/utils.fetch":8}],5:[function(require,module,exports){
 // Model: Comment
 
 // Defining the model name
@@ -359,7 +467,43 @@ Comment = function(attributes) {
 
 // Exporting the model
 module.exports = Comment;
-},{}],5:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
+// Model: Message
+
+// Defining the model name
+var Message;
+
+// Creating the model constructor
+Message = function(attributes) {
+
+    // Setting the default attributes of the model
+    this.attributes = {
+        user: null,
+        timestamp: null,
+        message: null
+    };
+
+    // fn: Initialize method that fires when the model is created
+    this.initialize = function(attributes) {
+
+        // extend (underscore) the default attributes if attributes have been defined when the model was created
+        if(attributes && typeof attributes === 'object') {
+            this.attributes = _.extend(this.attributes, attributes);
+        }
+
+        // Returning the model
+        return this;
+
+    };
+
+    // Fire the init method
+    this.initialize(attributes);
+
+};
+
+// Exporting the model
+module.exports = Message;
+},{}],7:[function(require,module,exports){
 // Model: ToDo
 
 // Defining the model name
@@ -411,18 +555,21 @@ ToDo.prototype.toggleDone = function() {
 
 // Exporting the model
 module.exports = ToDo;
-},{}],6:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 // Fetch
 // Fetch will be used to get fake data to populate the Basecamp dash
 
 // Defining the fetch method
 var fetch;
 
-// Defining fetching of toDo
+// Defining fetching of To-Do
 var toDo;
 
 // Defining fetching of Comments
 var comments;
+
+// Defining fetching of Messages
+var messages;
 
 // Fetch will use the jQuery .ajax method to retrieve data
 
@@ -469,14 +616,37 @@ comments = function(callback) {
 
 };
 
+
+chatLog = function(callback) {
+
+    // Defining the URl to fetch from
+    var url = 'js/data/testData.chatLog.js';
+
+    // Return the $.ajax method
+    return $.ajax({
+        dataType: 'json',
+        url: url,
+        success: function(data) {
+
+            // Return the callback func if defined
+            if(callback && typeof callback === 'function') {
+                // Returning with data
+                return callback(data);
+            }
+        }
+    });
+
+};
+
 fetch = {
     comments: comments,
+    chatLog: chatLog,
     toDo: toDo
 };
 
 // Exporting the fetch API
 module.exports = fetch;
-},{}],7:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 module.exports = function() {
     return console.log('Start Campsite!');
 };

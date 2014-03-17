@@ -4,11 +4,14 @@
 // Defining the fetch method
 var fetch;
 
-// Defining fetching of toDo
+// Defining fetching of To-Do
 var toDo;
 
 // Defining fetching of Comments
 var comments;
+
+// Defining fetching of Messages
+var messages;
 
 // Fetch will use the jQuery .ajax method to retrieve data
 
@@ -55,8 +58,31 @@ comments = function(callback) {
 
 };
 
+
+chatLog = function(callback) {
+
+    // Defining the URl to fetch from
+    var url = 'js/data/testData.chatLog.js';
+
+    // Return the $.ajax method
+    return $.ajax({
+        dataType: 'json',
+        url: url,
+        success: function(data) {
+
+            // Return the callback func if defined
+            if(callback && typeof callback === 'function') {
+                // Returning with data
+                return callback(data);
+            }
+        }
+    });
+
+};
+
 fetch = {
     comments: comments,
+    chatLog: chatLog,
     toDo: toDo
 };
 

@@ -141,75 +141,19 @@
         <!-- Campfire Chat Log -->
         <div class="chat-log-container" id="campfire-chat-log-container">
 
-            <section class="chat-log" id="campfire-chat-log">
-
-                <!-- Chat Message Item -->
-                <div class="chat-message">
-                    <!-- Chat: Timestamp -->
-                    <div class="timestamp">6:00 AM</div>
-                    <!-- Chat: User -->
-                    <div class="user">Todd H.</div>
-                    <!-- Chat: Message -->
-                    <div class="message">Something cool</div>
-                </div>
-<!-- Chat Message Item -->
-                <div class="chat-message">
-                    <!-- Chat: Timestamp -->
-                    <div class="timestamp">6:00 AM</div>
-                    <!-- Chat: User -->
-                    <div class="user">Todd H.</div>
-                    <!-- Chat: Message -->
-                    <div class="message">Something cool</div>
-                </div><!-- Chat Message Item -->
-                <div class="chat-message">
-                    <!-- Chat: Timestamp -->
-                    <div class="timestamp">6:00 AM</div>
-                    <!-- Chat: User -->
-                    <div class="user">Todd H.</div>
-                    <!-- Chat: Message -->
-                    <div class="message">Something cool</div>
-                </div><!-- Chat Message Item -->
-                <div class="chat-message">
-                    <!-- Chat: Timestamp -->
-                    <div class="timestamp">6:00 AM</div>
-                    <!-- Chat: User -->
-                    <div class="user">Todd H.</div>
-                    <!-- Chat: Message -->
-                    <div class="message">Something cool</div>
-                </div><!-- Chat Message Item -->
-                <div class="chat-message">
-                    <!-- Chat: Timestamp -->
-                    <div class="timestamp">6:00 AM</div>
-                    <!-- Chat: User -->
-                    <div class="user">Todd H.</div>
-                    <!-- Chat: Message -->
-                    <div class="message">Something cool</div>
-                </div><!-- Chat Message Item -->
-                <div class="chat-message">
-                    <!-- Chat: Timestamp -->
-                    <div class="timestamp">6:00 AM</div>
-                    <!-- Chat: User -->
-                    <div class="user">Todd H.</div>
-                    <!-- Chat: Message -->
-                    <div class="message">Something cool</div>
-                </div><!-- Chat Message Item -->
-                <div class="chat-message">
-                    <!-- Chat: Timestamp -->
-                    <div class="timestamp">6:00 AM</div>
-                    <!-- Chat: User -->
-                    <div class="user">Todd H.</div>
-                    <!-- Chat: Message -->
-                    <div class="message">Something cool</div>
-                </div>
-            </section>
+            <section class="chat-log" id="campfire-chat-log" data-bind="template: { name: 'template-campfire-message', foreach: models }"></section>
 
         </div>
 
     </aside>
 
 
+
+
+
     <!-- Template: Comments -->
     <script type="text/html" id="template-comment">
+
         <!-- Comment Topic -->
         <header class="header">
             <h4 class="header-title" data-bind="text: todo"></h4>
@@ -217,6 +161,7 @@
 
         <!-- Comments List -->
         <section class="comment-list"  id="chat-windows-phone-8-touch-response-comments" data-bind="template: { name: 'template-comment-list', foreach: models }"></section>
+
     </script>
 
 
@@ -255,8 +200,26 @@
     </script>
 
 
+
+    <!-- Template: Campfire Message -->
+    <script type="text/html" id="template-campfire-message">
+
+        <!-- Chat Message Item -->
+        <div class="chat-message">
+            <!-- Chat: Timestamp -->
+            <div class="timestamp" data-bind="text: attributes.timestamp"></div>
+            <!-- Chat: User -->
+            <div class="user" data-bind="text: attributes.user"></div>
+            <!-- Chat: Message -->
+            <div class="message" data-bind="html: attributes.message"></div>
+        </div>
+
+    </script>
+
+
     <!-- Template: To-Dos -->
     <script type="text/html" id="template-to-do">
+
         <!-- To-do: Header -->
         <header class="header">
             <h4 class="header-title" data-bind="text: list"></h4>
@@ -264,6 +227,7 @@
 
         <!-- To-Do List (Due Today) -->
         <ul class="to-do-list" data-bind="template: { name: 'template-to-do-list', foreach: models }"></ul>
+
     </script>
 
 

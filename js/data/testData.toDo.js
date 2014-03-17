@@ -17,11 +17,20 @@
                     "status": "Overdue"
                 },
 
+
+                {
+                    "assigned": "Jon Q",
+                    "commentCount": 3,
+                    "project": "Communications",
+                    "title": "Mingle with Basecamp peeps. (P.S. The discussions on the right may or may not have happened. 95.6% sure they didn't.)",
+                    "status": "normal"
+                },
+
                 {
                     "assigned": "Jon Q",
                     "commentCount": 1,
                     "project": "Design",
-                    "title": "Show off Basecamp redesign concept to the fine folks at 37 Sig.. err.. Basecamp ;)",
+                    "title": "Show off product concept redesign concept to the fine folks at Basecamp ;)",
                     "status": "normal"
                 },
 
